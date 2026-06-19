@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bodo Schiefer — Marke &amp; Kommunikation | Klarheit für wirksames Marketing</title>
+<meta name="description" content="Bodo Schiefer berät Geschäftsführungen und Marketingverantwortliche dabei, Marke und Kommunikation zu ordnen, Prioritäten zu schärfen und Wirkung zu erhöhen. Über 30 Jahre Erfahrung.">
+<meta property="og:title" content="Bodo Schiefer | Marke &amp; Kommunikation">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.schiefer-online.eu">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0d1b2a;
+    --ink-soft:#33414f;
+    --muted:#6b7785;
+    --blue:#1f4e79;
+    --blue-bright:#2f6db0;
+    --accent:#c8a45c;
+    --paper:#fbfaf7;
+    --paper-2:#f3f0ea;
+    --line:#e4ddd1;
+    --white:#ffffff;
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Inter',system-ui,-apple-system,sans-serif;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    font-size:17px;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  section{position:relative}
+  a{color:inherit}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(251,250,247,.82);
+    backdrop-filter:saturate(140%) blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:78px}
+  .nav img{height:42px;width:auto;display:block}
+  .nav-links{display:flex;gap:34px;align-items:center}
+  .nav-links a{
+    text-decoration:none;font-size:15px;font-weight:500;color:var(--ink-soft);
+    letter-spacing:.01em;transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--blue)}
+  .nav-cta{
+    background:var(--blue);color:#fff !important;padding:11px 22px;border-radius:40px;
+    font-weight:600;transition:background .2s,transform .2s;
+  }
+  .nav-cta:hover{background:var(--blue-bright);transform:translateY(-1px)}
+  .menu-btn{display:none;background:none;border:0;font-size:26px;color:var(--ink);cursor:pointer}
+  @media(max-width:820px){
+    .nav-links{display:none}
+    .menu-btn{display:block}
+    .nav-links.open{
+      display:flex;position:absolute;top:78px;left:0;right:0;flex-direction:column;
+      gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:8px 0;
+    }
+    .nav-links.open a{padding:14px 32px}
+    .nav-links.open .nav-cta{margin:10px 32px;text-align:center}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:0;border-bottom:1px solid var(--line);overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;min-height:min(86vh,760px)}
+  .hero-text{display:flex;flex-direction:column;justify-content:center;padding:80px 64px 80px 0}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:600;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--blue);margin-bottom:26px;
+  }
+  .eyebrow::before{content:"";width:30px;height:1.5px;background:var(--accent)}
+  .hero h1{
+    font-family:var(--serif);font-weight:500;font-size:clamp(2.5rem,4.6vw,4.3rem);
+    line-height:1.04;letter-spacing:-.015em;color:var(--ink);margin-bottom:28px;
+  }
+  .hero h1 em{font-style:italic;color:var(--blue)}
+  .hero-lead{font-size:1.18rem;color:var(--ink-soft);max-width:30em;margin-bottom:38px}
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .btn{
+    display:inline-block;font-weight:600;font-size:15px;padding:15px 30px;border-radius:42px;
+    text-decoration:none;transition:all .22s;cursor:pointer;border:1.5px solid transparent;
+  }
+  .btn-primary{background:var(--blue);color:#fff}
+  .btn-primary:hover{background:var(--blue-bright);transform:translateY(-2px);box-shadow:0 12px 28px -12px rgba(31,78,121,.6)}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+  .btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+  .hero-media{position:relative;background:var(--paper-2)}
+  .hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(13,27,42,.10),transparent 55%)}
+  @media(max-width:880px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero-text{padding:56px 0 48px}
+    .hero-media{min-height:340px;order:-1}
+  }
+
+  /* ---------- QUOTE STRIP ---------- */
+  .quote-strip{background:var(--ink);color:#fff;padding:64px 0}
+  .quote-strip .wrap{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
+  .badge-day{
+    flex:none;font-family:var(--serif);font-style:italic;font-size:1rem;line-height:1.3;
+    color:var(--accent);border-right:1px solid rgba(255,255,255,.22);padding-right:40px;max-width:200px;
+  }
+  .quote-strip blockquote{
+    font-family:var(--serif);font-weight:400;font-size:clamp(1.4rem,2.6vw,2rem);
+    line-height:1.32;letter-spacing:-.01em;
+  }
+  .quote-strip blockquote b{font-weight:600;color:#fff}
+  @media(max-width:760px){
+    .quote-strip .wrap{grid-template-columns:1fr;gap:24px}
+    .badge-day{border-right:0;border-bottom:1px solid rgba(255,255,255,.22);padding:0 0 20px}
+  }
+
+  /* ---------- SECTION BASICS ---------- */
+  .sec{padding:108px 0}
+  .sec-head{max-width:760px;margin-bottom:60px}
+  .kicker{
+    font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:18px;display:block;
+  }
+  h2{
+    font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.4vw,2.9rem);
+    line-height:1.12;letter-spacing:-.015em;color:var(--ink);
+  }
+  .sec-head p{font-size:1.12rem;color:var(--ink-soft);margin-top:22px}
+  .lead-statement{font-size:clamp(1.3rem,2.2vw,1.7rem);font-family:var(--serif);line-height:1.4;color:var(--ink);max-width:24em}
+  .lead-statement b{color:var(--blue)}
+
+  /* ---------- WHEN COMPANIES ---------- */
+  .when{background:var(--paper-2)}
+  .when-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:8px}
+  .when-card{
+    background:#fff;border:1px solid var(--line);border-radius:18px;padding:42px 40px;
+    transition:transform .25s,box-shadow .25s;
+  }
+  .when-card:hover{transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(13,27,42,.25)}
+  .when-card h3{
+    font-family:var(--serif);font-weight:500;font-size:1.6rem;color:var(--blue);margin-bottom:24px;
+    display:flex;align-items:baseline;gap:12px;
+  }
+  .when-card h3 span{font-family:var(--sans);font-size:.8rem;font-weight:700;color:var(--accent);letter-spacing:.1em}
+  .when-card ul{list-style:none;display:flex;flex-direction:column;gap:16px}
+  .when-card li{position:relative;padding-left:26px;font-size:1rem;color:var(--ink-soft);line-height:1.5}
+  .when-card li::before{
+    content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;
+    border:2px solid var(--accent);
+  }
+  @media(max-width:820px){.when-grid{grid-template-columns:1fr}}
+
+  /* ---------- SUPPORT (split with image) ---------- */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+  .split.rev .split-media{order:2}
+  .split-media img{width:100%;border-radius:18px;display:block;box-shadow:0 30px 60px -34px rgba(13,27,42,.4)}
+  .support-list{display:flex;flex-direction:column;gap:0;margin-top:14px}
+  .support-item{padding:26px 0;border-top:1px solid var(--line)}
+  .support-item:last-child{border-bottom:1px solid var(--line)}
+  .support-item h4{font-size:1.12rem;font-weight:600;color:var(--ink);margin-bottom:7px;display:flex;align-items:center;gap:12px}
+  .support-item h4::before{content:"";width:7px;height:7px;background:var(--blue);border-radius:50%;flex:none}
+  .support-item p{color:var(--muted);font-size:1rem;padding-left:19px}
+  @media(max-width:880px){
+    .split{grid-template-columns:1fr;gap:40px}
+    .split.rev .split-media{order:0}
+  }
+
+  /* ---------- OUTCOMES ---------- */
+  .outcomes{background:var(--ink);color:#fff}
+  .outcomes h2{color:#fff}
+  .outcomes .kicker{color:var(--accent)}
+  .out-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);border-radius:18px;overflow:hidden;margin-top:14px}
+  .out-cell{background:var(--ink);padding:44px 40px}
+  .out-cell .num{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--accent);margin-bottom:18px}
+  .out-cell h4{font-family:var(--serif);font-weight:500;font-size:1.45rem;margin-bottom:14px;line-height:1.25}
+  .out-cell p{color:rgba(255,255,255,.7);font-size:1rem}
+  @media(max-width:760px){.out-grid{grid-template-columns:1fr}}
+
+  /* ---------- HOW I WORK ---------- */
+  .how{background:var(--blue);color:#fff}
+  .how h2{color:#fff}
+  .how .kicker{color:#cfe0f1}
+  .how-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:start}
+  .how-steps{display:flex;flex-direction:column;gap:30px}
+  .how-step{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start}
+  .how-step .n{
+    font-family:var(--serif);font-size:1.5rem;width:52px;height:52px;flex:none;border-radius:50%;
+    border:1.5px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;color:#fff;
+  }
+  .how-step p{color:rgba(255,255,255,.86);font-size:1.05rem}
+  .how-pull{
+    font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,2.5vw,2.05rem);line-height:1.32;
+    border-left:3px solid var(--accent);padding-left:30px;
+  }
+  @media(max-width:880px){.how-grid{grid-template-columns:1fr;gap:44px}}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+  .about-photos{display:flex;flex-direction:column;gap:20px;position:sticky;top:110px}
+  .about-photos img{width:100%;border-radius:16px;display:block;box-shadow:0 24px 50px -32px rgba(13,27,42,.35)}
+  .about-body p{margin-bottom:22px;color:var(--ink-soft);font-size:1.06rem}
+  .about-body p.hl{font-family:var(--serif);font-size:1.25rem;line-height:1.45;color:var(--ink);border-left:3px solid var(--accent);padding-left:24px;margin:32px 0}
+  .industries{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
+  .industries span{font-size:.85rem;font-weight:500;color:var(--ink-soft);background:var(--paper-2);border:1px solid var(--line);padding:7px 15px;border-radius:30px}
+  @media(max-width:880px){
+    .about-grid{grid-template-columns:1fr;gap:36px}
+    .about-photos{flex-direction:row;position:static}
+  }
+  @media(max-width:560px){.about-photos{flex-direction:column}}
+
+  /* ---------- SUCCESS ---------- */
+  .success{background:var(--paper-2)}
+  .succ-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:14px}
+  .succ-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:34px 30px;transition:transform .25s,box-shadow .25s}
+  .succ-card:hover{transform:translateY(-4px);box-shadow:0 24px 50px -30px rgba(13,27,42,.25)}
+  .succ-card h4{font-family:var(--serif);font-weight:600;font-size:1.32rem;color:var(--blue);line-height:1.2;margin-bottom:14px}
+  .succ-card p{color:var(--muted);font-size:.98rem}
+  @media(max-width:880px){.succ-grid{grid-template-columns:1fr}}
+
+  /* ---------- MANDATES ---------- */
+  .mandates{text-align:center}
+  .mandates img{max-width:100%;height:auto;margin:40px auto 0;display:block;mix-blend-mode:multiply}
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner{background:var(--ink);color:#fff;text-align:center}
+  .cta-banner .wrap{max-width:780px}
+  .cta-banner h2{color:#fff;margin-bottom:8px}
+  .cta-banner .sub{font-family:var(--serif);font-style:italic;font-size:1.4rem;color:var(--accent);margin-bottom:22px}
+  .cta-banner p{color:rgba(255,255,255,.78);font-size:1.1rem;margin-bottom:36px}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .test-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:14px}
+  .test-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:40px 38px;display:flex;flex-direction:column}
+  .test-card .q{font-family:var(--serif);font-size:1.18rem;line-height:1.5;color:var(--ink);margin-bottom:26px}
+  .test-card .q::before{content:"\201C";font-family:var(--serif);font-size:2.6rem;color:var(--accent);line-height:0;vertical-align:-.35em;margin-right:4px}
+  .test-foot{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:auto;border-top:1px solid var(--line);padding-top:22px}
+  .test-foot .who strong{display:block;font-size:1rem;color:var(--ink)}
+  .test-foot .who span{font-size:.88rem;color:var(--muted)}
+  .test-foot img{max-height:44px;max-width:120px;width:auto;object-fit:contain;mix-blend-mode:multiply}
+  @media(max-width:820px){.test-grid{grid-template-columns:1fr}}
+
+  /* ---------- PRESS ---------- */
+  .press{background:var(--paper-2)}
+  .press-list{display:flex;flex-direction:column;margin-top:14px}
+  .press-item{display:grid;grid-template-columns:170px 1fr auto;gap:30px;align-items:center;padding:28px 0;border-top:1px solid var(--line);text-decoration:none;transition:background .2s}
+  .press-item:last-child{border-bottom:1px solid var(--line)}
+  .press-item:hover{background:rgba(255,255,255,.6)}
+  .press-item .outlet{font-weight:700;color:var(--blue);font-size:1rem}
+  .press-item .outlet small{display:block;font-weight:500;color:var(--muted);font-size:.82rem;margin-top:3px}
+  .press-item .desc{color:var(--ink-soft);font-size:1rem}
+  .press-item .arrow{font-size:1.3rem;color:var(--accent);transition:transform .2s}
+  .press-item:hover .arrow{transform:translateX(5px)}
+  @media(max-width:760px){
+    .press-item{grid-template-columns:1fr;gap:8px}
+    .press-item .arrow{display:none}
+  }
+
+  /* ---------- AWARDS ---------- */
+  .awards{text-align:center}
+  .awards img{max-width:100%;height:auto;margin:38px auto 0;display:block}
+
+  /* ---------- TRUST BANNER ---------- */
+  .trust{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .trust .wrap{display:grid;grid-template-columns:auto 1fr auto;gap:46px;align-items:center;padding-top:70px;padding-bottom:70px}
+  .trust .logo-round{width:128px;height:auto}
+  .trust h2{font-size:clamp(1.8rem,3vw,2.5rem)}
+  .trust p{color:var(--ink-soft);margin-top:14px;max-width:40em;font-size:1.05rem}
+  @media(max-width:820px){
+    .trust .wrap{grid-template-columns:1fr;gap:26px;text-align:center}
+    .trust .logo-round{margin:0 auto}
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:rgba(255,255,255,.7);padding:72px 0 40px}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .foot-brand img{height:64px;width:auto;margin-bottom:22px;background:#fff;padding:10px 14px;border-radius:10px}
+  .foot-brand p{font-size:.98rem;max-width:30em}
+  .foot-col h5{color:#fff;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px}
+  .foot-col a{display:block;color:rgba(255,255,255,.7);text-decoration:none;font-size:.98rem;margin-bottom:12px;transition:color .2s}
+  .foot-col a:hover{color:var(--accent)}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;font-size:.85rem;color:rgba(255,255,255,.5);flex-wrap:wrap;gap:12px}
+  @media(max-width:820px){.foot-top{grid-template-columns:1fr;gap:34px}}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="wrap nav">
+    <a href="#top" aria-label="Bodo Schiefer Startseite">
+      <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/e3248885-6951-45d5-907b-e4cc5165d79b/Logo+BS+Marke+%26+Kommunikation+blau_klein.png?format=1500w" alt="Bodo Schiefer — Marke & Kommunikation">
+    </a>
+    <nav class="nav-links" id="navlinks">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#vorgehen">Vorgehen</a>
+      <a href="#ueber-mich">Über mich</a>
+      <a href="#erfolge">Erfolge</a>
+      <a href="#stimmen">Stimmen</a>
+      <a href="mailto:bs@schiefer-online.eu" class="nav-cta">Austausch vereinbaren</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Menü">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="eyebrow">Marke &amp; Kommunikation · Beratung</span>
+        <h1>Wenn Marketing zu komplex wird, braucht es <em>Klarheit</em>.</h1>
+        <p class="hero-lead">Ich unterstütze Geschäftsführungen und Marketingverantwortliche dabei, Themen zu ordnen, Perspektiven zusammenzuführen und Prioritäten zu schärfen — für mehr Schlagkraft im Markt.</p>
+        <div class="hero-cta">
+          <a href="mailto:bs@schiefer-online.eu" class="btn btn-primary">Austausch vereinbaren</a>
+          <a href="#leistungen" class="btn btn-ghost">Wie ich helfe</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/4ba80ce5-0138-48da-b259-d2bdde3da25d/hanna_ai_creation_add_blue_background_--chaos_40_--ar_7960_--ra_5fbecdfd-d31f-4e71-a30e-9d6801c45feb.jpg" alt="Bodo Schiefer">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE STRIP -->
+<section class="quote-strip">
+  <div class="wrap">
+    <div class="badge-day">Vom Handelsblatt als „Unternehmer des Tages“ ausgezeichnet</div>
+    <blockquote>„Viele Unternehmen wünschen sich mehr Klarheit, Orientierung und Wirkung statt immer neuer Maßnahmen. <b>Genau dabei unterstütze ich.“</b></blockquote>
+  </div>
+</section>
+
+<!-- WHEN COMPANIES HIRE ME -->
+<section class="sec when reveal" id="einsatz">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Wann Unternehmen mich holen</span>
+      <h2>Zwei Ausgangslagen, ein Ziel: wieder handlungsfähig werden.</h2>
+    </div>
+    <div class="when-grid">
+      <div class="when-card">
+        <h3>Start-ups <span>· WACHSTUM</span></h3>
+        <ul>
+          <li>Ein starkes Produkt ist da, aber noch nicht klar, wie daraus ein marktfähiges Angebot wird.</li>
+          <li>Positionierung, Vermarktung und Go-to-Market spielen noch nicht klar genug zusammen.</li>
+          <li>Viele Themen sollen gleichzeitig gelöst werden — klare Prioritäten fehlen.</li>
+          <li>Gründer sind stark auf Produkt fokussiert, doch Marke und Aktivierung brauchen mehr Gewicht.</li>
+          <li>Aus ersten Aktivitäten soll ein integriertes System aus Positionierung, Customer Journey und Organisation entstehen.</li>
+        </ul>
+      </div>
+      <div class="when-card">
+        <h3>Mittelstand <span>· STEUERUNG</span></h3>
+        <ul>
+          <li>Marketing und Kommunikation sollen stärker zum Unternehmenserfolg beitragen.</li>
+          <li>Intern ist zu viel Komplexität entstanden — Prioritäten sind nicht klar genug.</li>
+          <li>Positionierung, Kommunikation und Maßnahmen zahlen nicht mehr auf eine gemeinsame Richtung ein.</li>
+          <li>Geschäftsführung, Marketing, Vertrieb und Partner bringen Perspektiven ein, aber keine klare Entscheidungsgrundlage entsteht.</li>
+          <li>Entscheidungen dauern zu lange, weil Orientierung fehlt.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT / LEISTUNGEN -->
+<section class="sec reveal" id="leistungen">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <span class="kicker">Wobei ich konkret unterstütze</span>
+        <h2>Fünf Hebel für fokussiertes Marketing.</h2>
+        <div class="support-list">
+          <div class="support-item">
+            <h4>Positionierung schärfen</h4>
+            <p>Klarer bestimmen, wofür eine Marke steht, worin ihre relevante Differenzierung liegt und welche Botschaften daraus folgen.</p>
+          </div>
+          <div class="support-item">
+            <h4>Prioritäten klären</h4>
+            <p>Themen, Maßnahmen und Anforderungen so ordnen, dass Entscheidungen leichter fallen und Ressourcen gezielter wirken.</p>
+          </div>
+          <div class="support-item">
+            <h4>Neuausrichtung strukturieren</h4>
+            <p>Marke, Kommunikation und Steuerung neu ordnen, wenn Wachstum oder Transformation neue Klarheit verlangen.</p>
+          </div>
+          <div class="support-item">
+            <h4>Perspektiven zusammenführen</h4>
+            <p>Geschäftsführung, Marketing, Vertrieb und Partner auf eine gemeinsame Richtung bringen — zu einer tragfähigen Entscheidungsgrundlage.</p>
+          </div>
+          <div class="support-item">
+            <h4>Wirkung erhöhen</h4>
+            <p>Marketing stärker auf Relevanz, Fokus und unternehmerische Ziele ausrichten, damit Maßnahmen besser zusammenwirken.</p>
+          </div>
+        </div>
+      </div>
+      <div class="split-media">
+        <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/e526d83e-96d2-4530-8c39-94fbdc6e0bf8/Bild+Website+3.jpg" alt="Zusammenarbeit und Strategie">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="sec outcomes reveal" id="ergebnisse">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Was daraus entsteht</span>
+      <h2>Klarheit, die im Alltag trägt.</h2>
+    </div>
+    <div class="out-grid">
+      <div class="out-cell">
+        <div class="num">01</div>
+        <h4>Klarere Steuerung von Budgets und Prioritäten</h4>
+        <p>Ressourcen werden gezielter eingesetzt, Entscheidungen nachvollziehbarer, Maßnahmen zahlen stärker auf gemeinsame Ziele ein.</p>
+      </div>
+      <div class="out-cell">
+        <div class="num">02</div>
+        <h4>Geklärte Schnittstellen und Verantwortlichkeiten</h4>
+        <p>Bereiche, Stakeholder und externe Partner arbeiten besser zusammen, weil Rollen und Entscheidungswege klarer sind.</p>
+      </div>
+      <div class="out-cell">
+        <div class="num">03</div>
+        <h4>Etablierte KPIs und Steuerungsgrößen</h4>
+        <p>Schneller erkennbar, was wirkt, wo nachjustiert werden muss und wie Maßnahmen laufend verbessert werden.</p>
+      </div>
+      <div class="out-cell">
+        <div class="num">04</div>
+        <h4>Handlungsfähigere Teams und Beteiligte</h4>
+        <p>Teams arbeiten eigenständiger, handeln proaktiver und übernehmen im Alltag klarer Verantwortung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW I WORK -->
+<section class="sec how reveal" id="vorgehen">
+  <div class="wrap">
+    <div class="how-grid">
+      <div>
+        <span class="kicker">Wie ich arbeite</span>
+        <h2>Zuhören, ordnen, verdichten.</h2>
+        <p class="how-pull" style="margin-top:34px">Ich arbeite pragmatisch, strukturiert und partnerschaftlich — mit klarem Blick für das, was strategisch sinnvoll, im Unternehmen umsetzbar ist und wirklich funktioniert.</p>
+      </div>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="n">1</div>
+          <p>Ich steige dort ein, wo Themen unübersichtlich werden, Entscheidungen stocken oder unterschiedliche Sichtweisen zusammengebracht werden müssen.</p>
+        </div>
+        <div class="how-step">
+          <div class="n">2</div>
+          <p>Ich höre zu, frage nach, ordne ein und verdichte. So wird sichtbar, welche Fragen wirklich entscheidend sind — und welche nachrangig.</p>
+        </div>
+        <div class="how-step">
+          <div class="n">3</div>
+          <p>Daraus entsteht eine tragfähige Grundlage für Entscheidungen, Kommunikation und Umsetzung.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec reveal" id="ueber-mich">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-photos">
+        <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/f411cbc2-dcda-4be3-8d6a-25761173255a/IMG_1176.jpeg" alt="Bodo Schiefer Porträt">
+        <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/d193c2fe-663c-464b-952c-92931496515f/Bild+fu%CC%88r+Website.png" alt="Arbeitsweise">
+      </div>
+      <div class="about-body">
+        <span class="kicker">Über mich</span>
+        <h2>Über 30 Jahre an der Schnittstelle von Marke, Marketing und Kommunikation.</h2>
+        <p style="margin-top:26px">Ich habe internationale Marken, mittelständische Unternehmen und Start-ups begleitet: von FMCG, OTC und Handel über Automotive, Telekommunikation und Cybersecurity bis zu B2B, Maschinenbau, Weiterbildung und Versicherungen.</p>
+        <p class="hl">Diese Breite hat meinen Blick geschärft. Ich sehe nicht nur Branchen — ich erkenne Muster: wo Themen unklar werden, wo Entscheidungen stocken und wo Kommunikation an Wirkung verliert.</p>
+        <p>Geprägt hat mich, dass ich unterschiedliche Rollen von innen kenne. Ich habe auf Agenturseite gearbeitet, in Beratungs- und Führungsverantwortung, war als Marketing Manager direkt beim Kunden im Einsatz — und habe ein Technologie-Start-up mitaufgebaut und geleitet. Wer selbst gesteuert, entschieden und unternehmerische Verantwortung getragen hat, berät anders.</p>
+        <p>Meine Stärke liegt darin, mich schnell in komplexe Aufgaben einzuarbeiten, unterschiedliche Perspektiven zusammenzubringen und daraus eine tragfähige Richtung zu entwickeln. Schwierige Aufgaben scheitern selten daran, dass es keine Lösung gibt — häufig wurde nur noch nicht klar genug gefragt, tief genug gedacht oder konsequent genug daran gearbeitet.</p>
+        <div class="industries">
+          <span>FMCG</span><span>OTC &amp; Handel</span><span>Automotive</span><span>Telekommunikation</span><span>Cybersecurity</span><span>B2B</span><span>Maschinenbau</span><span>Weiterbildung</span><span>Versicherungen</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUCCESS -->
+<section class="sec success reveal" id="erfolge">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Ausgewählte Erfolge</span>
+      <h2>Wirkung, die sich messen lässt.</h2>
+    </div>
+    <div class="succ-grid">
+      <div class="succ-card">
+        <h4>Umsatz in 2,5 Jahren versechsfacht</h4>
+        <p>Strategische Neuausrichtung von Angebot, Positionierung und Kommunikation.</p>
+      </div>
+      <div class="succ-card">
+        <h4>Break-even nach 11 Monaten</h4>
+        <p>Marketing- und Kommunikationsstrategie für ein Technologie-Start-up geschärft und das Anwendungsfeld zielgruppengerecht erweitert.</p>
+      </div>
+      <div class="succ-card">
+        <h4>Internationale Budgets reduziert</h4>
+        <p>Einheitliche Produktpositionierung für mehrere Länder entwickelt und implementiert.</p>
+      </div>
+      <div class="succ-card">
+        <h4>Marketing-Transformation unterstützt</h4>
+        <p>Kundenzentriertes Mindset etabliert, Geschäftsmodell und Organisationsstrukturen weiterentwickelt.</p>
+      </div>
+      <div class="succ-card">
+        <h4>Wirkung im Funnel erhöht</h4>
+        <p>Performance und Branding markenadäquat verbunden und Maßnahmen effizienter gesteuert.</p>
+      </div>
+      <div class="succ-card">
+        <h4>Strategie in Wirkung übersetzt</h4>
+        <p>Marke mit Kleinstbudget revitalisiert und fachübergreifend aktiviert — mit Eintrag ins Guinness-Buch der Rekorde.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANDATES -->
+<section class="sec mandates reveal" id="mandate">
+  <div class="wrap">
+    <span class="kicker">Auswahl bisheriger Mandate</span>
+    <h2>Vertrauen von Marken aus vielen Branchen.</h2>
+    <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/2d6f1e47-b733-46d5-9912-f815d85c6ae2/Logoteppich+Website.png" alt="Auswahl bisheriger Mandate">
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="sec cta-banner reveal">
+  <div class="wrap">
+    <h2>Lassen Sie uns sprechen.</h2>
+    <div class="sub">Neuausrichtung, Wachstum oder festgefahrene Entscheidungen?</div>
+    <p>Wenn Marke und Kommunikation an Klarheit, Fokus und Wirkung gewinnen sollen, lohnt sich ein unverbindliches Kennenlernen.</p>
+    <a href="mailto:bs@schiefer-online.eu" class="btn btn-primary">Austausch vereinbaren</a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec reveal" id="stimmen">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Was Kunden sagen</span>
+      <h2>Stimmen aus über drei Jahrzehnten Zusammenarbeit.</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card">
+        <p class="q">Bodo hat unsere Arbeit über mehrere Jahre mit großem Engagement, hohem Qualitätsanspruch und strategischer Stärke begleitet. Er durchdringt komplexe Zusammenhänge schnell und schafft klare Orientierung.</p>
+        <div class="test-foot">
+          <div class="who"><strong>Marcel Theijs</strong><span>Marketingdirektor, Haufe Akademie</span></div>
+          <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/b0e5a30d-fc44-4287-a1ed-6869da3db307/Logo+AKA.png" alt="Haufe Akademie">
+        </div>
+      </div>
+      <div class="test-card">
+        <p class="q">Bodo ist offen, gut organisiert und effizient. Er hat die Zusammenarbeit zwischen den Beteiligten verbessert und dafür gesorgt, dass Ergebnisse termingerecht und im Budget geliefert wurden.</p>
+        <div class="test-foot">
+          <div class="who"><strong>Kate Evans</strong><span>Global Marketing Director Dulcolax, Boehringer Ingelheim</span></div>
+          <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/69abed7b-b21a-4ac8-ae4d-af438e9ff5fc/Logo+BI+fu%CC%88r+Kundenzitat.png" alt="Boehringer Ingelheim">
+        </div>
+      </div>
+      <div class="test-card">
+        <p class="q">Bodo verfügt über ein außergewöhnlich gutes Verständnis dafür, wie Marken, Marketing und Customer Experience zusammenwirken müssen. Die von ihm verantworteten Maßnahmen führten zu nachweisbarem Wachstum.</p>
+        <div class="test-foot">
+          <div class="who"><strong>Stefan W. Herzberg</strong><span>Aufsichtsratsvorsitzender, snoopstar</span></div>
+          <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/3ea1f9a7-ccdf-4942-9719-94f07ebe837e/Logo+snoopstar+fu%CC%88r+Kundenzitat.png" alt="snoopstar">
+        </div>
+      </div>
+      <div class="test-card">
+        <p class="q">Bodo ist nicht nur ein zuverlässiger und kooperativer Geschäftspartner, sondern auch ein leidenschaftlicher Lösungsfinder. Mit seiner dynamischen Art schafft er eine Atmosphäre des Vertrauens und der Inspiration.</p>
+        <div class="test-foot">
+          <div class="who"><strong>Julia Risch</strong><span>Team Lead Brand Marketing &amp; Campaigns, Volvo</span></div>
+          <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/6a64f065-429d-43eb-af2f-ef012d0d8e00/Logo+Volvo+fu%CC%88r+Kundenzitat.png" alt="Volvo">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS -->
+<section class="sec press reveal" id="presse">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Presse &amp; Publikationen</span>
+      <h2>Sichtbar in Fach- und Wirtschaftsmedien.</h2>
+    </div>
+    <div class="press-list">
+      <a class="press-item" href="https://www.handelsblatt.com/unternehmen/handel-konsumgueter/augmented-reality-das-start-up-snoopstar-bringt-aldi-prospekten-das-sprechen-bei/27359276.html" target="_blank" rel="noopener">
+        <div class="outlet">Handelsblatt<small>2021</small></div>
+        <div class="desc">Porträt über unternehmerische Innovationsleistung, profitables Wachstum und Augmented Reality. Auszeichnung als „Unternehmer des Tages“.</div>
+        <div class="arrow">→</div>
+      </a>
+      <a class="press-item" href="https://www.horizont.net/marketing/nachrichten/snoopstar-so-macht-sich-print-mit-ar-fit-fuers-metaverse-197190" target="_blank" rel="noopener">
+        <div class="outlet">HORIZONT<small>2022</small></div>
+        <div class="desc">Bericht über den strategischen Einsatz von Augmented Reality in Marketingkommunikation und Sales Funnel.</div>
+        <div class="arrow">→</div>
+      </a>
+      <a class="press-item" href="https://www.horizont.net/agenturen/nachrichten/Expansion-Britische-Agenturgruppe-Engine-kommt-nach-Deutschland-167503" target="_blank" rel="noopener">
+        <div class="outlet">HORIZONT<small>2018</small></div>
+        <div class="desc">Aufbau des deutschen Geschäfts der britischen Agenturgruppe Engine im Kontext von Expansion und Brexit.</div>
+        <div class="arrow">→</div>
+      </a>
+      <a class="press-item" href="https://amzn.eu/d/08cUxO1x" target="_blank" rel="noopener">
+        <div class="outlet">Springer-Vieweg<small>2022 · Buchkapitel</small></div>
+        <div class="desc">Digitale und innovative Vermarktung von Gebäuden durch Augmented Reality aus Kommunikations- und Transformationssicht.</div>
+        <div class="arrow">→</div>
+      </a>
+      <a class="press-item" href="https://www.bdzv.de/service/presse/branchennachrichten/2025/kurswechsel-jetzt-der-bdzv-vermarktungsreport-2025-fuer-mehr-wachstum" target="_blank" rel="noopener">
+        <div class="outlet">BDZV-Jahresreport<small>2021</small></div>
+        <div class="desc">Fachbeitrag über die strategische Verbindung von Print und Digital im Mediamix sowie Augmented Reality für Wirkung und Conversion.</div>
+        <div class="arrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="sec awards reveal" id="awards">
+  <div class="wrap">
+    <span class="kicker">Auszeichnungen</span>
+    <h2>Prämiert für wirksame Marken- und Kommunikationsarbeit.</h2>
+    <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/790cf514-b038-4275-bd82-bcdbbc206326/Bild+Awards+fu%CC%88r+Website+2.png" alt="Auszeichnungen">
+  </div>
+</section>
+
+<!-- TRUST BANNER -->
+<section class="trust reveal">
+  <div class="wrap">
+    <img class="logo-round" src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/030294ea-fdf8-4383-905a-d6feeb0860ea/Logo+Bodo+Schiefer.png" alt="Bodo Schiefer Siegel">
+    <div>
+      <h2>Erfahrung, der Sie vertrauen können.</h2>
+      <p>Seit mehr als dreißig Jahren unterstütze ich anspruchsvolle Organisationen dabei, komplexe Herausforderungen strukturiert zu lösen und ihre Effizienz deutlich zu steigern.</p>
+    </div>
+    <a href="mailto:bs@schiefer-online.eu" class="btn btn-primary">Jetzt Kontakt aufnehmen</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="kontakt">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/7ee2f891-6f80-4985-a213-0c630be5d8a6/Logo+BS+Marke+%26+Kommunikation+blau_mittel.jpg" alt="Bodo Schiefer — Marke & Kommunikation">
+        <p>Klarheit, Orientierung und Wirkung für Marke und Kommunikation — bei Geschäftsführungen, Marketingverantwortlichen und Gründerteams.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Navigation</h5>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#vorgehen">Vorgehen</a>
+        <a href="#ueber-mich">Über mich</a>
+        <a href="#erfolge">Erfolge</a>
+        <a href="#stimmen">Kundenstimmen</a>
+      </div>
+      <div class="foot-col">
+        <h5>Kontakt</h5>
+        <a href="mailto:bs@schiefer-online.eu">bs@schiefer-online.eu</a>
+        <a href="https://www.linkedin.com/in/bodoschiefer/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.schiefer-online.eu/impressum" target="_blank" rel="noopener">Impressum</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Bodo Schiefer · Marke &amp; Kommunikation</span>
+      <span>Redesign-Konzept</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  // mobile menu
+  var mb=document.getElementById('menuBtn'),nl=document.getElementById('navlinks');
+  mb.addEventListener('click',function(){nl.classList.toggle('open')});
+  nl.addEventListener('click',function(e){if(e.target.tagName==='A')nl.classList.remove('open')});
+  // reveal on scroll
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+</script>
+</body>
+</html>
