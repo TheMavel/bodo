@@ -79,15 +79,15 @@
   }
 
   /* LOGO MARQUEE */
-  .marquee{background:var(--ink);padding:20px 0;overflow:hidden;position:relative;border-bottom:1px solid rgba(255,255,255,.08)}
-  .marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
-  .marquee::before{left:0;background:linear-gradient(90deg,var(--ink),transparent)}
-  .marquee::after{right:0;background:linear-gradient(270deg,var(--ink),transparent)}
-  .marquee .track{display:flex;width:max-content;animation:scroll 46s linear infinite;align-items:center}
+  .marquee{background:var(--paper);padding:30px 0;overflow:hidden;position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:110px;z-index:2;pointer-events:none}
+  .marquee::before{left:0;background:linear-gradient(90deg,var(--paper),transparent)}
+  .marquee::after{right:0;background:linear-gradient(270deg,var(--paper),transparent)}
+  .marquee .track{display:flex;width:max-content;animation:scroll 48s linear infinite;align-items:center}
   .marquee:hover .track{animation-play-state:paused}
-  .mq-chip{display:flex;align-items:center;justify-content:center;background:#fff;border-radius:10px;height:58px;min-width:130px;padding:10px 22px;margin:0 12px;box-shadow:0 6px 16px -10px rgba(0,0,0,.5)}
-  .mq-chip img,.mq-chip canvas{height:34px;max-width:220px;width:auto;object-fit:contain;display:block}
-  .mq-chip.txt{font-weight:700;color:var(--ink);font-size:1.02rem;letter-spacing:.01em}
+  .mq-chip{display:flex;align-items:center;justify-content:center;height:46px;margin:0 38px}
+  .mq-chip img,.mq-chip canvas{height:40px;max-width:210px;width:auto;object-fit:contain;display:block}
+  .mq-chip.txt{font-weight:700;color:var(--ink-soft);font-size:1.02rem;letter-spacing:.01em}
   @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
   /* HERO */
@@ -756,11 +756,14 @@
         });
         if(logos.length<6){fallback();return;}
         function chip(l){
-          var pad=Math.round(l.h*0.12);
           var d=document.createElement('div');d.className='mq-chip';
-          var lc=document.createElement('canvas');lc.width=l.w+pad*2;lc.height=l.h+pad*2;
-          var g=lc.getContext('2d');g.fillStyle='#ffffff';g.fillRect(0,0,lc.width,lc.height);
-          g.drawImage(c,l.x,l.y,l.w,l.h,pad,pad,l.w,l.h);
+          var lc=document.createElement('canvas');lc.width=l.w;lc.height=l.h;
+          var g=lc.getContext('2d');
+          g.drawImage(c,l.x,l.y,l.w,l.h,0,0,l.w,l.h);
+          /* weißen Hintergrund transparent machen -> Logos sitzen frei auf dem Seitenhintergrund */
+          var id=g.getImageData(0,0,l.w,l.h),p=id.data;
+          for(var k=0;k<p.length;k+=4){ if(p[k]>240&&p[k+1]>240&&p[k+2]>240){ p[k+3]=0; } }
+          g.putImageData(id,0,0);
           d.appendChild(lc);return d;
         }
         function fill(){logos.forEach(function(l){track.appendChild(chip(l));});}
