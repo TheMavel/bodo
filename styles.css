@@ -1,0 +1,87 @@
+/* Bodo Schiefer — Marke & Kommunikation | gemeinsame Styles für Unterseiten */
+:root{
+  --ink:#0d1b2a;--ink-soft:#33414f;--muted:#6b7785;
+  --blue:#306FBA;--blue-deep:#255a99;--accent:#c8a45c;
+  --paper:#fbfaf7;--paper-2:#f3f0ea;--line:#e4ddd1;--white:#fff;
+  --serif:'Fraunces',Georgia,serif;--sans:'Inter',system-ui,-apple-system,sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;font-size:17px;overflow-x:hidden}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+a{color:inherit}
+.skip{position:absolute;left:-9999px;top:0;background:var(--blue);color:#fff;padding:10px 16px;z-index:300;border-radius:0 0 8px 0}
+.skip:focus{left:0}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:200;background:rgba(251,250,247,.9);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.nav img{height:40px;width:auto;display:block}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{text-decoration:none;font-size:15px;font-weight:500;color:var(--ink-soft);letter-spacing:.01em;transition:color .2s}
+.nav-links a:hover{color:var(--blue)}
+.nav-cta{background:var(--blue);color:#fff !important;padding:11px 22px;border-radius:40px;font-weight:600;transition:background .2s,transform .2s}
+.nav-cta:hover{background:var(--blue-deep);transform:translateY(-1px)}
+.menu-btn{display:none;background:none;border:0;font-size:26px;color:var(--ink);cursor:pointer}
+@media(max-width:860px){
+  .nav-links{display:none}
+  .menu-btn{display:block}
+  .nav-links.open{display:flex;position:absolute;top:76px;left:0;right:0;flex-direction:column;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:8px 0}
+  .nav-links.open a{padding:14px 32px}
+  .nav-links.open .nav-cta{margin:10px 32px;text-align:center}
+}
+
+/* PAGE HERO */
+.page-hero{padding:64px 0 40px;border-bottom:1px solid var(--line);background:var(--paper-2)}
+.page-hero .kicker{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:14px;display:block}
+.page-hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.1rem,4vw,3.2rem);line-height:1.08;letter-spacing:-.015em}
+.page-hero p{font-size:1.12rem;color:var(--ink-soft);margin-top:18px;max-width:60ch}
+.crumbs{font-size:.85rem;color:var(--muted);margin-bottom:18px}
+.crumbs a{color:var(--muted);text-decoration:none}
+.crumbs a:hover{color:var(--blue)}
+
+/* CONTENT */
+.content{padding:64px 0 96px}
+.legal{max-width:780px;margin:0 auto}
+.legal h2{font-family:var(--serif);font-weight:500;font-size:1.6rem;color:var(--ink);margin:36px 0 12px;letter-spacing:-.01em}
+.legal h2:first-child{margin-top:0}
+.legal h3{font-size:1.05rem;font-weight:700;color:var(--ink);margin:24px 0 8px}
+.legal p{color:var(--ink-soft);margin-bottom:14px}
+.legal address{font-style:normal;color:var(--ink);line-height:1.8}
+.legal a{color:var(--blue)}
+.legal ul{margin:0 0 16px 22px;color:var(--ink-soft)}
+.legal li{margin-bottom:7px}
+.note{background:#fff;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:18px 22px;color:var(--muted);font-size:.95rem;margin:28px 0}
+
+/* PRESS ARCHIVE */
+.press-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:8px}
+.parsed-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.parsed-card:hover{transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(13,27,42,.25)}
+.parsed-card .ph{height:200px;background:var(--paper-2);overflow:hidden}
+.parsed-card .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.parsed-card .body{padding:28px 30px;display:flex;flex-direction:column;flex:1}
+.parsed-card .meta{font-size:.76rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.parsed-card h3{font-family:var(--serif);font-weight:500;font-size:1.4rem;color:var(--ink);line-height:1.2;margin-bottom:12px}
+.parsed-card p{color:var(--muted);font-size:1rem;margin-bottom:20px;flex:1}
+.parsed-card .more{font-size:.9rem;font-weight:600;color:var(--blue);text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+.parsed-card .more:hover{text-decoration:underline}
+@media(max-width:760px){.press-grid{grid-template-columns:1fr}}
+
+/* CTA STRIP */
+.cta-strip{background:var(--ink);color:#fff;text-align:center;padding:80px 0}
+.cta-strip h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,3vw,2.5rem);color:#fff;margin-bottom:10px}
+.cta-strip p{color:rgba(255,255,255,.78);margin-bottom:30px}
+.btn{display:inline-block;font-weight:600;font-size:15px;padding:15px 30px;border-radius:42px;text-decoration:none;transition:all .22s;cursor:pointer;border:1.5px solid transparent;background:var(--blue);color:#fff}
+.btn:hover{background:var(--blue-deep);transform:translateY(-2px);box-shadow:0 12px 28px -12px rgba(48,111,186,.6)}
+
+/* FOOTER */
+footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 38px}
+.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;padding-bottom:46px;border-bottom:1px solid rgba(255,255,255,.12)}
+.foot-brand img{height:62px;width:auto;margin-bottom:22px;background:#fff;padding:10px 14px;border-radius:10px}
+.foot-brand p{font-size:.98rem;max-width:30em}
+.foot-col h5{color:#fff;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px}
+.foot-col a{display:block;color:rgba(255,255,255,.7);text-decoration:none;font-size:.98rem;margin-bottom:12px;transition:color .2s}
+.foot-col a:hover{color:var(--accent)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-size:.85rem;color:rgba(255,255,255,.5);flex-wrap:wrap;gap:12px}
+@media(max-width:820px){.foot-top{grid-template-columns:1fr;gap:34px}}

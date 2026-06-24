@@ -1,0 +1,12 @@
+# Betriebssystem
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Temporäre / versehentlich kopierte Dateien
+_app.js
+_synctest.txt
+*.tmp
