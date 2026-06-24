@@ -16,9 +16,9 @@
     --ink:#0d1b2a;
     --ink-soft:#33414f;
     --muted:#6b7785;
-    --blue:#1f4e79;
-    --blue-bright:#2f6db0;
-    --accent:#c8a45c;
+    --blue:#306FBA;          /* Bodos Blauton */
+    --blue-deep:#255a99;     /* Hover / Verlauf */
+    --accent:#c8a45c;        /* Goldton */
     --paper:#fbfaf7;
     --paper-2:#f3f0ea;
     --line:#e4ddd1;
@@ -29,268 +29,278 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{
-    font-family:var(--sans);
-    color:var(--ink);
-    background:var(--paper);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    font-size:17px;
-  }
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;font-size:17px;overflow-x:hidden}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
   section{position:relative}
   a{color:inherit}
 
-  /* ---------- HEADER ---------- */
-  header{
-    position:sticky;top:0;z-index:100;
-    background:rgba(251,250,247,.82);
-    backdrop-filter:saturate(140%) blur(12px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav{display:flex;align-items:center;justify-content:space-between;height:78px}
-  .nav img{height:42px;width:auto;display:block}
-  .nav-links{display:flex;gap:34px;align-items:center}
-  .nav-links a{
-    text-decoration:none;font-size:15px;font-weight:500;color:var(--ink-soft);
-    letter-spacing:.01em;transition:color .2s;
-  }
+  /* HEADER */
+  header{position:sticky;top:0;z-index:200;background:rgba(251,250,247,.85);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .nav img{height:40px;width:auto;display:block}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{text-decoration:none;font-size:15px;font-weight:500;color:var(--ink-soft);letter-spacing:.01em;transition:color .2s}
   .nav-links a:hover{color:var(--blue)}
-  .nav-cta{
-    background:var(--blue);color:#fff !important;padding:11px 22px;border-radius:40px;
-    font-weight:600;transition:background .2s,transform .2s;
-  }
-  .nav-cta:hover{background:var(--blue-bright);transform:translateY(-1px)}
+  .nav-cta{background:var(--blue);color:#fff !important;padding:11px 22px;border-radius:40px;font-weight:600;transition:background .2s,transform .2s}
+  .nav-cta:hover{background:var(--blue-deep);transform:translateY(-1px)}
   .menu-btn{display:none;background:none;border:0;font-size:26px;color:var(--ink);cursor:pointer}
-  @media(max-width:820px){
+  @media(max-width:860px){
     .nav-links{display:none}
     .menu-btn{display:block}
-    .nav-links.open{
-      display:flex;position:absolute;top:78px;left:0;right:0;flex-direction:column;
-      gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:8px 0;
-    }
+    .nav-links.open{display:flex;position:absolute;top:76px;left:0;right:0;flex-direction:column;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:8px 0}
     .nav-links.open a{padding:14px 32px}
     .nav-links.open .nav-cta{margin:10px 32px;text-align:center}
   }
 
-  /* ---------- HERO ---------- */
+  /* LOGO MARQUEE */
+  .marquee{background:var(--ink);padding:20px 0;overflow:hidden;position:relative;border-bottom:1px solid rgba(255,255,255,.08)}
+  .marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
+  .marquee::before{left:0;background:linear-gradient(90deg,var(--ink),transparent)}
+  .marquee::after{right:0;background:linear-gradient(270deg,var(--ink),transparent)}
+  .marquee .track{display:flex;width:max-content;animation:scroll 46s linear infinite;align-items:center}
+  .marquee:hover .track{animation-play-state:paused}
+  .mq-chip{display:flex;align-items:center;justify-content:center;background:#fff;border-radius:10px;height:58px;min-width:130px;padding:10px 22px;margin:0 12px;box-shadow:0 6px 16px -10px rgba(0,0,0,.5)}
+  .mq-chip img{max-height:34px;max-width:120px;width:auto;object-fit:contain;display:block}
+  .mq-chip.txt{font-weight:700;color:var(--ink);font-size:1.02rem;letter-spacing:.01em}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* HERO */
   .hero{padding:0;border-bottom:1px solid var(--line);overflow:hidden}
-  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;min-height:min(86vh,760px)}
-  .hero-text{display:flex;flex-direction:column;justify-content:center;padding:80px 64px 80px 0}
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:600;
-    letter-spacing:.13em;text-transform:uppercase;color:var(--blue);margin-bottom:26px;
-  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;min-height:min(84vh,740px)}
+  .hero-text{display:flex;flex-direction:column;justify-content:center;padding:78px 64px 78px 0}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--blue);margin-bottom:24px}
   .eyebrow::before{content:"";width:30px;height:1.5px;background:var(--accent)}
-  .hero h1{
-    font-family:var(--serif);font-weight:500;font-size:clamp(2.5rem,4.6vw,4.3rem);
-    line-height:1.04;letter-spacing:-.015em;color:var(--ink);margin-bottom:28px;
-  }
+  .hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.5rem,4.6vw,4.2rem);line-height:1.04;letter-spacing:-.015em;margin-bottom:24px}
   .hero h1 em{font-style:italic;color:var(--blue)}
-  .hero-lead{font-size:1.18rem;color:var(--ink-soft);max-width:30em;margin-bottom:38px}
+  .hero-lead{font-size:1.12rem;color:var(--ink-soft);max-width:32em;margin-bottom:14px}
+  .hero-tag{font-family:var(--serif);font-size:1.3rem;color:var(--blue);font-weight:500;margin-bottom:32px}
   .hero-cta{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-  .btn{
-    display:inline-block;font-weight:600;font-size:15px;padding:15px 30px;border-radius:42px;
-    text-decoration:none;transition:all .22s;cursor:pointer;border:1.5px solid transparent;
-  }
+  .btn{display:inline-block;font-weight:600;font-size:15px;padding:15px 30px;border-radius:42px;text-decoration:none;transition:all .22s;cursor:pointer;border:1.5px solid transparent}
   .btn-primary{background:var(--blue);color:#fff}
-  .btn-primary:hover{background:var(--blue-bright);transform:translateY(-2px);box-shadow:0 12px 28px -12px rgba(31,78,121,.6)}
+  .btn-primary:hover{background:var(--blue-deep);transform:translateY(-2px);box-shadow:0 12px 28px -12px rgba(48,111,186,.6)}
   .btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
   .btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
-  .hero-media{position:relative;background:var(--paper-2)}
-  .hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(13,27,42,.10),transparent 55%)}
+  .hero-media{position:relative;background:var(--blue)}
+  .hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+  .hero-cap{position:absolute;left:26px;bottom:26px;z-index:3;background:rgba(251,250,247,.95);border-radius:14px;padding:15px 20px;box-shadow:0 18px 40px -20px rgba(0,0,0,.55);max-width:280px;border-left:3px solid var(--accent)}
+  .hero-cap strong{font-family:var(--serif);font-size:1.3rem;color:var(--ink);display:block;line-height:1.1}
+  .hero-cap span{font-size:.84rem;color:var(--muted);display:block;margin-top:5px}
   @media(max-width:880px){
     .hero-grid{grid-template-columns:1fr}
-    .hero-text{padding:56px 0 48px}
-    .hero-media{min-height:340px;order:-1}
+    .hero-text{padding:48px 0 40px}
+    .hero-media{min-height:380px;order:-1}
   }
 
-  /* ---------- QUOTE STRIP ---------- */
-  .quote-strip{background:var(--ink);color:#fff;padding:64px 0}
-  .quote-strip .wrap{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
-  .badge-day{
-    flex:none;font-family:var(--serif);font-style:italic;font-size:1rem;line-height:1.3;
-    color:var(--accent);border-right:1px solid rgba(255,255,255,.22);padding-right:40px;max-width:200px;
-  }
-  .quote-strip blockquote{
-    font-family:var(--serif);font-weight:400;font-size:clamp(1.4rem,2.6vw,2rem);
-    line-height:1.32;letter-spacing:-.01em;
-  }
-  .quote-strip blockquote b{font-weight:600;color:#fff}
-  @media(max-width:760px){
-    .quote-strip .wrap{grid-template-columns:1fr;gap:24px}
-    .badge-day{border-right:0;border-bottom:1px solid rgba(255,255,255,.22);padding:0 0 20px}
+  /* QUOTE STRIP */
+  .quote-strip{background:var(--blue);color:#fff;padding:62px 0}
+  .quote-strip .wrap{max-width:920px;text-align:center}
+  .quote-strip blockquote{font-family:var(--serif);font-weight:400;font-size:clamp(1.45rem,2.7vw,2.05rem);line-height:1.35;letter-spacing:-.01em}
+  .quote-strip blockquote b{font-weight:600;color:var(--accent)}
+  .quote-strip .att{margin-top:22px;font-size:.85rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+  .quote-strip .att b{color:var(--accent)}
+
+  /* SECTION BASICS */
+  .sec{padding:104px 0}
+  .sec-head{max-width:760px;margin-bottom:56px}
+  .kicker{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:16px;display:block}
+  h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.4vw,2.9rem);line-height:1.12;letter-spacing:-.015em}
+  .sec-head p{font-size:1.12rem;color:var(--ink-soft);margin-top:20px}
+
+  /* CHAOS -> CLARITY */
+  .transform{background:var(--paper-2)}
+  .compare{position:relative;width:100%;height:440px;border-radius:20px;overflow:hidden;border:1px solid var(--line);margin-top:14px;user-select:none;touch-action:none;box-shadow:0 30px 60px -36px rgba(13,27,42,.4)}
+  .layer{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:48px 56px}
+  .layer .tag-lab{position:absolute;top:22px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px;border-radius:30px}
+  .chaos{background:radial-gradient(circle at 30% 40%,#26384a,#0d1b2a)}
+  .chaos .tag-lab{left:24px;background:rgba(255,255,255,.1);color:#fff}
+  .chaos-field{position:absolute;inset:0}
+  .chip{position:absolute;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.82);font-size:13px;font-weight:500;padding:8px 14px;border-radius:8px;white-space:nowrap;backdrop-filter:blur(2px)}
+  .clarity{background:linear-gradient(135deg,var(--blue-deep),var(--blue));color:#fff;clip-path:inset(0 0 0 50%)}
+  .clarity .tag-lab{right:24px;background:rgba(255,255,255,.18);color:#fff}
+  .clarity-inner{max-width:380px;margin-left:auto;margin-right:8%}
+  .clarity-inner h3{font-family:var(--serif);font-weight:500;font-size:1.7rem;margin-bottom:24px;line-height:1.2}
+  .clar-step{display:flex;align-items:center;gap:14px;padding:11px 0;border-top:1px solid rgba(255,255,255,.22);font-size:1.05rem}
+  .clar-step:first-of-type{border-top:0}
+  .clar-step b{font-family:var(--serif);color:var(--accent);font-size:1.1rem;width:24px}
+  .handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--accent);z-index:5;transform:translateX(-50%);cursor:ew-resize}
+  .handle::after{content:"⇆";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;background:var(--accent);color:var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+  .compare-hint{text-align:center;color:var(--muted);font-size:.92rem;margin-top:18px}
+  @media(max-width:640px){
+    .compare{height:380px}
+    .layer{padding:40px 26px}
+    .clarity-inner{margin-right:5%}
   }
 
-  /* ---------- SECTION BASICS ---------- */
-  .sec{padding:108px 0}
-  .sec-head{max-width:760px;margin-bottom:60px}
-  .kicker{
-    font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--accent);margin-bottom:18px;display:block;
-  }
-  h2{
-    font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.4vw,2.9rem);
-    line-height:1.12;letter-spacing:-.015em;color:var(--ink);
-  }
-  .sec-head p{font-size:1.12rem;color:var(--ink-soft);margin-top:22px}
-  .lead-statement{font-size:clamp(1.3rem,2.2vw,1.7rem);font-family:var(--serif);line-height:1.4;color:var(--ink);max-width:24em}
-  .lead-statement b{color:var(--blue)}
-
-  /* ---------- WHEN COMPANIES ---------- */
-  .when{background:var(--paper-2)}
+  /* WHEN */
   .when-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:8px}
-  .when-card{
-    background:#fff;border:1px solid var(--line);border-radius:18px;padding:42px 40px;
-    transition:transform .25s,box-shadow .25s;
-  }
+  .when-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:42px 40px;transition:transform .25s,box-shadow .25s}
   .when-card:hover{transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(13,27,42,.25)}
-  .when-card h3{
-    font-family:var(--serif);font-weight:500;font-size:1.6rem;color:var(--blue);margin-bottom:24px;
-    display:flex;align-items:baseline;gap:12px;
-  }
+  .when-card h3{font-family:var(--serif);font-weight:500;font-size:1.6rem;color:var(--blue);margin-bottom:22px;display:flex;align-items:baseline;gap:12px}
   .when-card h3 span{font-family:var(--sans);font-size:.8rem;font-weight:700;color:var(--accent);letter-spacing:.1em}
-  .when-card ul{list-style:none;display:flex;flex-direction:column;gap:16px}
+  .when-card ul{list-style:none;display:flex;flex-direction:column;gap:15px}
   .when-card li{position:relative;padding-left:26px;font-size:1rem;color:var(--ink-soft);line-height:1.5}
-  .when-card li::before{
-    content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;
-    border:2px solid var(--accent);
-  }
+  .when-card li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;border:2px solid var(--accent)}
   @media(max-width:820px){.when-grid{grid-template-columns:1fr}}
 
-  /* ---------- SUPPORT (split with image) ---------- */
+  /* LEISTUNGEN ACCORDION */
   .split{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-  .split.rev .split-media{order:2}
   .split-media img{width:100%;border-radius:18px;display:block;box-shadow:0 30px 60px -34px rgba(13,27,42,.4)}
-  .support-list{display:flex;flex-direction:column;gap:0;margin-top:14px}
-  .support-item{padding:26px 0;border-top:1px solid var(--line)}
-  .support-item:last-child{border-bottom:1px solid var(--line)}
-  .support-item h4{font-size:1.12rem;font-weight:600;color:var(--ink);margin-bottom:7px;display:flex;align-items:center;gap:12px}
-  .support-item h4::before{content:"";width:7px;height:7px;background:var(--blue);border-radius:50%;flex:none}
-  .support-item p{color:var(--muted);font-size:1rem;padding-left:19px}
-  @media(max-width:880px){
-    .split{grid-template-columns:1fr;gap:40px}
-    .split.rev .split-media{order:0}
-  }
+  .acc{margin-top:14px;border-top:1px solid var(--line)}
+  .acc-item{border-bottom:1px solid var(--line)}
+  .acc-head{width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:22px 0;display:flex;align-items:center;gap:16px;font-family:var(--sans);font-size:1.14rem;font-weight:600;color:var(--ink);transition:color .2s}
+  .acc-head:hover{color:var(--blue)}
+  .acc-head .ix{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:1.05rem;width:30px;flex:none}
+  .acc-head .pm{margin-left:auto;font-size:1.5rem;color:var(--blue);transition:transform .3s;line-height:1}
+  .acc-item.open .acc-head .pm{transform:rotate(45deg)}
+  .acc-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .acc-body p{color:var(--muted);font-size:1rem;padding:0 0 24px 46px}
+  @media(max-width:880px){.split{grid-template-columns:1fr;gap:40px}}
 
-  /* ---------- OUTCOMES ---------- */
+  /* STATS */
+  .stats{background:var(--blue);color:#fff}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.18);border-radius:18px;overflow:hidden}
+  .stat{background:var(--blue);padding:48px 30px;text-align:center}
+  .stat .big{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,5vw,3.6rem);color:#fff;line-height:1;letter-spacing:-.02em}
+  .stat .big .u{color:var(--accent)}
+  .stat .lab{margin-top:14px;font-size:.96rem;color:rgba(255,255,255,.82)}
+  @media(max-width:760px){.stats-grid{grid-template-columns:1fr 1fr}}
+
+  /* OUTCOMES (dunkel) */
   .outcomes{background:var(--ink);color:#fff}
   .outcomes h2{color:#fff}
-  .outcomes .kicker{color:var(--accent)}
   .out-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);border-radius:18px;overflow:hidden;margin-top:14px}
   .out-cell{background:var(--ink);padding:44px 40px}
-  .out-cell .num{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--accent);margin-bottom:18px}
+  .out-cell .num{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--accent);margin-bottom:16px}
   .out-cell h4{font-family:var(--serif);font-weight:500;font-size:1.45rem;margin-bottom:14px;line-height:1.25}
-  .out-cell p{color:rgba(255,255,255,.7);font-size:1rem}
+  .out-cell p{color:rgba(255,255,255,.72);font-size:1rem}
   @media(max-width:760px){.out-grid{grid-template-columns:1fr}}
 
-  /* ---------- HOW I WORK ---------- */
+  /* HOW */
   .how{background:var(--blue);color:#fff}
   .how h2{color:#fff}
-  .how .kicker{color:#cfe0f1}
+  .how .kicker{color:#dbe7f5}
   .how-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:start}
-  .how-steps{display:flex;flex-direction:column;gap:30px}
+  .how-steps{display:flex;flex-direction:column;gap:28px}
   .how-step{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start}
-  .how-step .n{
-    font-family:var(--serif);font-size:1.5rem;width:52px;height:52px;flex:none;border-radius:50%;
-    border:1.5px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;color:#fff;
-  }
-  .how-step p{color:rgba(255,255,255,.86);font-size:1.05rem}
-  .how-pull{
-    font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,2.5vw,2.05rem);line-height:1.32;
-    border-left:3px solid var(--accent);padding-left:30px;
-  }
+  .how-step .n{font-family:var(--serif);font-size:1.5rem;width:52px;height:52px;flex:none;border-radius:50%;border:1.5px solid rgba(255,255,255,.45);display:flex;align-items:center;justify-content:center}
+  .how-step p{color:rgba(255,255,255,.88);font-size:1.05rem}
+  .how-pull{font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,2.5vw,2.05rem);line-height:1.32;border-left:3px solid var(--accent);padding-left:30px}
   @media(max-width:880px){.how-grid{grid-template-columns:1fr;gap:44px}}
 
-  /* ---------- ABOUT ---------- */
+  /* ABOUT */
   .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
-  .about-photos{display:flex;flex-direction:column;gap:20px;position:sticky;top:110px}
+  .about-photos{display:flex;flex-direction:column;gap:14px;position:sticky;top:104px}
   .about-photos img{width:100%;border-radius:16px;display:block;box-shadow:0 24px 50px -32px rgba(13,27,42,.35)}
+  .about-photos .cap{font-size:.85rem;color:var(--muted);text-align:center}
   .about-body p{margin-bottom:22px;color:var(--ink-soft);font-size:1.06rem}
-  .about-body p.hl{font-family:var(--serif);font-size:1.25rem;line-height:1.45;color:var(--ink);border-left:3px solid var(--accent);padding-left:24px;margin:32px 0}
-  .industries{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
+  .about-body p.hl{font-family:var(--serif);font-size:1.25rem;line-height:1.45;color:var(--ink);border-left:3px solid var(--accent);padding-left:24px;margin:30px 0}
+  .industries{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}
   .industries span{font-size:.85rem;font-weight:500;color:var(--ink-soft);background:var(--paper-2);border:1px solid var(--line);padding:7px 15px;border-radius:30px}
   @media(max-width:880px){
     .about-grid{grid-template-columns:1fr;gap:36px}
-    .about-photos{flex-direction:row;position:static}
+    .about-photos{position:static;max-width:420px}
   }
-  @media(max-width:560px){.about-photos{flex-direction:column}}
 
-  /* ---------- SUCCESS ---------- */
+  /* SUCCESS */
   .success{background:var(--paper-2)}
-  .succ-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:14px}
+  .succ-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:14px}
   .succ-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:34px 30px;transition:transform .25s,box-shadow .25s}
   .succ-card:hover{transform:translateY(-4px);box-shadow:0 24px 50px -30px rgba(13,27,42,.25)}
-  .succ-card h4{font-family:var(--serif);font-weight:600;font-size:1.32rem;color:var(--blue);line-height:1.2;margin-bottom:14px}
+  .succ-card .ic{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:1.1rem;margin-bottom:12px}
+  .succ-card h4{font-family:var(--serif);font-weight:600;font-size:1.3rem;color:var(--blue);line-height:1.2;margin-bottom:12px}
   .succ-card p{color:var(--muted);font-size:.98rem}
   @media(max-width:880px){.succ-grid{grid-template-columns:1fr}}
 
-  /* ---------- MANDATES ---------- */
+  /* MANDATES */
   .mandates{text-align:center}
-  .mandates img{max-width:100%;height:auto;margin:40px auto 0;display:block;mix-blend-mode:multiply}
+  .mandates img{max-width:100%;height:auto;margin:36px auto 0;display:block;mix-blend-mode:multiply}
 
-  /* ---------- CTA BANNER ---------- */
+  /* CTA BANNER */
   .cta-banner{background:var(--ink);color:#fff;text-align:center}
   .cta-banner .wrap{max-width:780px}
   .cta-banner h2{color:#fff;margin-bottom:8px}
   .cta-banner .sub{font-family:var(--serif);font-style:italic;font-size:1.4rem;color:var(--accent);margin-bottom:22px}
-  .cta-banner p{color:rgba(255,255,255,.78);font-size:1.1rem;margin-bottom:36px}
+  .cta-banner p{color:rgba(255,255,255,.8);font-size:1.1rem;margin-bottom:36px}
 
-  /* ---------- TESTIMONIALS ---------- */
-  .test-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:14px}
-  .test-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:40px 38px;display:flex;flex-direction:column}
-  .test-card .q{font-family:var(--serif);font-size:1.18rem;line-height:1.5;color:var(--ink);margin-bottom:26px}
-  .test-card .q::before{content:"\201C";font-family:var(--serif);font-size:2.6rem;color:var(--accent);line-height:0;vertical-align:-.35em;margin-right:4px}
-  .test-foot{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:auto;border-top:1px solid var(--line);padding-top:22px}
-  .test-foot .who strong{display:block;font-size:1rem;color:var(--ink)}
-  .test-foot .who span{font-size:.88rem;color:var(--muted)}
-  .test-foot img{max-height:44px;max-width:120px;width:auto;object-fit:contain;mix-blend-mode:multiply}
-  @media(max-width:820px){.test-grid{grid-template-columns:1fr}}
-
-  /* ---------- PRESS ---------- */
-  .press{background:var(--paper-2)}
-  .press-list{display:flex;flex-direction:column;margin-top:14px}
-  .press-item{display:grid;grid-template-columns:170px 1fr auto;gap:30px;align-items:center;padding:28px 0;border-top:1px solid var(--line);text-decoration:none;transition:background .2s}
-  .press-item:last-child{border-bottom:1px solid var(--line)}
-  .press-item:hover{background:rgba(255,255,255,.6)}
-  .press-item .outlet{font-weight:700;color:var(--blue);font-size:1rem}
-  .press-item .outlet small{display:block;font-weight:500;color:var(--muted);font-size:.82rem;margin-top:3px}
-  .press-item .desc{color:var(--ink-soft);font-size:1rem}
-  .press-item .arrow{font-size:1.3rem;color:var(--accent);transition:transform .2s}
-  .press-item:hover .arrow{transform:translateX(5px)}
+  /* TESTIMONIAL CAROUSEL */
+  .tcar{position:relative;margin-top:14px}
+  .tcar-view{overflow:hidden;border-radius:20px}
+  .tcar-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+  .tcar-slide{min-width:100%}
+  .tcar-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:56px 60px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+  .tcar-card .q{font-family:var(--serif);font-weight:400;font-size:clamp(1.25rem,2.1vw,1.6rem);line-height:1.42;color:var(--ink)}
+  .tcar-card .q::before{content:"\201C";font-family:var(--serif);font-size:3rem;color:var(--accent);line-height:0;vertical-align:-.35em;margin-right:6px}
+  .tcar-side{text-align:center;border-left:1px solid var(--line);padding-left:40px}
+  .tcar-side img{max-height:54px;max-width:130px;width:auto;object-fit:contain;mix-blend-mode:multiply;margin-bottom:18px}
+  .tcar-side strong{display:block;font-size:1.02rem;color:var(--ink)}
+  .tcar-side span{font-size:.88rem;color:var(--muted);display:block;margin-top:4px;max-width:180px}
+  .tcar-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:30px}
+  .tcar-btn{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--line);background:#fff;color:var(--blue);font-size:20px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+  .tcar-btn:hover{border-color:var(--blue);background:var(--blue);color:#fff}
+  .tcar-dots{display:flex;gap:9px}
+  .tcar-dots button{width:9px;height:9px;border-radius:50%;border:0;background:var(--line);cursor:pointer;padding:0;transition:all .2s}
+  .tcar-dots button.active{background:var(--accent);width:26px;border-radius:5px}
   @media(max-width:760px){
-    .press-item{grid-template-columns:1fr;gap:8px}
-    .press-item .arrow{display:none}
+    .tcar-card{grid-template-columns:1fr;gap:28px;padding:40px 32px}
+    .tcar-side{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:28px;text-align:left;display:flex;align-items:center;gap:20px}
+    .tcar-side img{margin-bottom:0}
+    .tcar-side span{max-width:none}
   }
 
-  /* ---------- AWARDS ---------- */
+  /* PRESS WÜHLTISCH */
+  .press{background:var(--paper-2)}
+  .press-head-row{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:30px}
+  .press-tools{display:flex;gap:10px}
+  .press-tools button{font-family:var(--sans);font-size:.86rem;font-weight:600;color:var(--blue);background:#fff;border:1.5px solid var(--line);padding:10px 18px;border-radius:30px;cursor:pointer;transition:all .2s}
+  .press-tools button:hover{border-color:var(--blue);background:var(--blue);color:#fff}
+  .table{position:relative;height:600px;border-radius:20px;background:repeating-linear-gradient(45deg,#efe9dd 0 22px,#ece5d6 22px 44px);border:1px solid var(--line);overflow:hidden;box-shadow:inset 0 2px 30px rgba(13,27,42,.08)}
+  .clip{position:absolute;width:294px;background:#fffdf8;border:1px solid #e7dfce;border-radius:4px;padding:0 0 18px;cursor:grab;box-shadow:0 14px 30px -14px rgba(13,27,42,.45);transition:box-shadow .2s, transform .12s;touch-action:none;overflow:hidden}
+  .clip:hover{box-shadow:0 22px 48px -16px rgba(13,27,42,.55)}
+  .clip.drag{cursor:grabbing;box-shadow:0 30px 60px -16px rgba(13,27,42,.6)}
+  .clip::before{content:"";position:absolute;top:-9px;left:50%;transform:translateX(-50%) rotate(-3deg);width:64px;height:18px;background:rgba(200,164,92,.5);border:1px solid rgba(160,130,70,.4);z-index:2}
+  .clip-photo{width:100%;height:140px;overflow:hidden;background:#e9e2d4}
+  .clip-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .clip-pad{padding:18px 22px 0}
+  .clip-mast{font-family:var(--serif);font-weight:600;font-size:1.32rem;color:var(--ink);border-bottom:2px solid var(--ink);padding-bottom:8px;letter-spacing:.01em}
+  .clip-yr{font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:10px 0 10px}
+  .clip-desc{font-size:.9rem;color:var(--ink-soft);line-height:1.45;margin-bottom:14px}
+  .clip .more{font-size:.84rem;font-weight:600;color:var(--blue);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+  .clip .more:hover{text-decoration:underline}
+  .press-hint{text-align:center;color:var(--muted);font-size:.92rem;margin-top:18px}
+  @media(max-width:760px){
+    .table{height:720px}
+    .clip{width:250px}
+  }
+
+  /* AWARDS */
   .awards{text-align:center}
-  .awards img{max-width:100%;height:auto;margin:38px auto 0;display:block}
+  .awards img{max-width:100%;height:auto;margin:34px auto 0;display:block}
 
-  /* ---------- TRUST BANNER ---------- */
+  /* TRUST */
   .trust{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .trust .wrap{display:grid;grid-template-columns:auto 1fr auto;gap:46px;align-items:center;padding-top:70px;padding-bottom:70px}
-  .trust .logo-round{width:128px;height:auto}
-  .trust h2{font-size:clamp(1.8rem,3vw,2.5rem)}
+  .trust .wrap{display:grid;grid-template-columns:230px 1fr auto;gap:50px;align-items:center;padding-top:66px;padding-bottom:66px}
+  .trust-photo img{width:100%;border-radius:16px;display:block;box-shadow:0 24px 50px -30px rgba(13,27,42,.4)}
+  .trust-photo .cap{text-align:center;font-size:.88rem;color:var(--muted);margin-top:10px;font-weight:600}
+  .trust .logo-round{width:120px;height:auto;margin-bottom:20px}
+  .trust h2{font-size:clamp(1.8rem,3vw,2.4rem)}
   .trust p{color:var(--ink-soft);margin-top:14px;max-width:40em;font-size:1.05rem}
-  @media(max-width:820px){
-    .trust .wrap{grid-template-columns:1fr;gap:26px;text-align:center}
-    .trust .logo-round{margin:0 auto}
+  @media(max-width:880px){
+    .trust .wrap{grid-template-columns:1fr;gap:28px;text-align:center}
+    .trust-photo{max-width:280px;margin:0 auto}
+    .trust .logo-round{margin:0 auto 18px}
   }
 
-  /* ---------- FOOTER ---------- */
-  footer{background:var(--ink);color:rgba(255,255,255,.7);padding:72px 0 40px}
-  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.12)}
-  .foot-brand img{height:64px;width:auto;margin-bottom:22px;background:#fff;padding:10px 14px;border-radius:10px}
+  /* FOOTER */
+  footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 38px}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;padding-bottom:46px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .foot-brand img{height:62px;width:auto;margin-bottom:22px;background:#fff;padding:10px 14px;border-radius:10px}
   .foot-brand p{font-size:.98rem;max-width:30em}
   .foot-col h5{color:#fff;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px}
   .foot-col a{display:block;color:rgba(255,255,255,.7);text-decoration:none;font-size:.98rem;margin-bottom:12px;transition:color .2s}
   .foot-col a:hover{color:var(--accent)}
-  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;font-size:.85rem;color:rgba(255,255,255,.5);flex-wrap:wrap;gap:12px}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-size:.85rem;color:rgba(255,255,255,.5);flex-wrap:wrap;gap:12px}
   @media(max-width:820px){.foot-top{grid-template-columns:1fr;gap:34px}}
 
-  /* reveal */
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
   .reveal.in{opacity:1;transform:none}
 </style>
@@ -308,12 +318,17 @@
       <a href="#vorgehen">Vorgehen</a>
       <a href="#ueber-mich">Über mich</a>
       <a href="#erfolge">Erfolge</a>
-      <a href="#stimmen">Stimmen</a>
+      <a href="#presse">Presse</a>
       <a href="mailto:bs@schiefer-online.eu" class="nav-cta">Austausch vereinbaren</a>
     </nav>
     <button class="menu-btn" id="menuBtn" aria-label="Menü">☰</button>
   </div>
 </header>
+
+<!-- LOGO MARQUEE -->
+<div class="marquee" aria-label="Kunden und Partner">
+  <div class="track" id="mtrack"></div>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="top">
@@ -322,7 +337,8 @@
       <div class="hero-text">
         <span class="eyebrow">Marke &amp; Kommunikation · Beratung</span>
         <h1>Wenn Marketing zu komplex wird, braucht es <em>Klarheit</em>.</h1>
-        <p class="hero-lead">Ich unterstütze Geschäftsführungen und Marketingverantwortliche dabei, Themen zu ordnen, Perspektiven zusammenzuführen und Prioritäten zu schärfen — für mehr Schlagkraft im Markt.</p>
+        <p class="hero-lead">Ich unterstütze Geschäftsführungen und Marketingverantwortliche dabei, Themen zu ordnen, Perspektiven zusammenzuführen und Prioritäten zu schärfen. So werden Entscheidungen leichter, Kommunikation fokussierter und Marketing wirksamer.</p>
+        <p class="hero-tag">Für mehr Schlagkraft im Markt.</p>
         <div class="hero-cta">
           <a href="mailto:bs@schiefer-online.eu" class="btn btn-primary">Austausch vereinbaren</a>
           <a href="#leistungen" class="btn btn-ghost">Wie ich helfe</a>
@@ -330,6 +346,10 @@
       </div>
       <div class="hero-media">
         <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/4ba80ce5-0138-48da-b259-d2bdde3da25d/hanna_ai_creation_add_blue_background_--chaos_40_--ar_7960_--ra_5fbecdfd-d31f-4e71-a30e-9d6801c45feb.jpg" alt="Bodo Schiefer">
+        <div class="hero-cap">
+          <strong>Bodo Schiefer</strong>
+          <span>vom Handelsblatt als „Unternehmer des Tages“ ausgezeichnet</span>
+        </div>
       </div>
     </div>
   </div>
@@ -338,13 +358,41 @@
 <!-- QUOTE STRIP -->
 <section class="quote-strip">
   <div class="wrap">
-    <div class="badge-day">Vom Handelsblatt als „Unternehmer des Tages“ ausgezeichnet</div>
     <blockquote>„Viele Unternehmen wünschen sich mehr Klarheit, Orientierung und Wirkung statt immer neuer Maßnahmen. <b>Genau dabei unterstütze ich.“</b></blockquote>
+    <div class="att"><b>Bodo Schiefer</b> · Marke &amp; Kommunikation</div>
   </div>
 </section>
 
-<!-- WHEN COMPANIES HIRE ME -->
-<section class="sec when reveal" id="einsatz">
+<!-- CHAOS -> CLARITY -->
+<section class="sec transform reveal" id="klarheit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Vom Durcheinander zur Richtung</span>
+      <h2>Ziehen Sie den Regler — so fühlt sich der Unterschied an.</h2>
+    </div>
+    <div class="compare" id="compare">
+      <div class="layer chaos">
+        <span class="tag-lab">Vorher · Komplexität</span>
+        <div class="chaos-field" id="chaosField"></div>
+      </div>
+      <div class="layer clarity" id="clarityLayer">
+        <span class="tag-lab">Nachher · Klarheit</span>
+        <div class="clarity-inner">
+          <h3>Eine gemeinsame Richtung.</h3>
+          <div class="clar-step"><b>1</b><span>Positionierung schärfen</span></div>
+          <div class="clar-step"><b>2</b><span>Prioritäten klären</span></div>
+          <div class="clar-step"><b>3</b><span>Steuerung &amp; Rollen ordnen</span></div>
+          <div class="clar-step"><b>4</b><span>Wirkung im Markt erhöhen</span></div>
+        </div>
+      </div>
+      <div class="handle" id="handle"></div>
+    </div>
+    <p class="compare-hint">↔ Regler ziehen — links das typische Durcheinander, rechts die geordnete Richtung.</p>
+  </div>
+</section>
+
+<!-- WHEN -->
+<section class="sec when reveal" id="einsatz" style="background:#fff">
   <div class="wrap">
     <div class="sec-head">
       <span class="kicker">Wann Unternehmen mich holen</span>
@@ -356,8 +404,8 @@
         <ul>
           <li>Ein starkes Produkt ist da, aber noch nicht klar, wie daraus ein marktfähiges Angebot wird.</li>
           <li>Positionierung, Vermarktung und Go-to-Market spielen noch nicht klar genug zusammen.</li>
-          <li>Viele Themen sollen gleichzeitig gelöst werden — klare Prioritäten fehlen.</li>
-          <li>Gründer sind stark auf Produkt fokussiert, doch Marke und Aktivierung brauchen mehr Gewicht.</li>
+          <li>Viele Themen sollen gleichzeitig gelöst werden und klare Prioritäten fehlen.</li>
+          <li>Gründer sind stark auf Produkt und Entwicklung fokussiert, doch Marke und Aktivierung brauchen mehr Gewicht.</li>
           <li>Aus ersten Aktivitäten soll ein integriertes System aus Positionierung, Customer Journey und Organisation entstehen.</li>
         </ul>
       </div>
@@ -365,9 +413,9 @@
         <h3>Mittelstand <span>· STEUERUNG</span></h3>
         <ul>
           <li>Marketing und Kommunikation sollen stärker zum Unternehmenserfolg beitragen.</li>
-          <li>Intern ist zu viel Komplexität entstanden — Prioritäten sind nicht klar genug.</li>
-          <li>Positionierung, Kommunikation und Maßnahmen zahlen nicht mehr auf eine gemeinsame Richtung ein.</li>
-          <li>Geschäftsführung, Marketing, Vertrieb und Partner bringen Perspektiven ein, aber keine klare Entscheidungsgrundlage entsteht.</li>
+          <li>Intern ist zu viel Komplexität entstanden und Prioritäten sind nicht klar genug.</li>
+          <li>Positionierung, Kommunikation und Maßnahmen zahlen nicht mehr ausreichend auf eine gemeinsame Richtung ein.</li>
+          <li>Geschäftsführung, Marketing, Vertrieb und Partner bringen Perspektiven ein, aber es entsteht keine klare Entscheidungsgrundlage.</li>
           <li>Entscheidungen dauern zu lange, weil Orientierung fehlt.</li>
         </ul>
       </div>
@@ -375,33 +423,33 @@
   </div>
 </section>
 
-<!-- SUPPORT / LEISTUNGEN -->
+<!-- LEISTUNGEN -->
 <section class="sec reveal" id="leistungen">
   <div class="wrap">
     <div class="split">
       <div>
         <span class="kicker">Wobei ich konkret unterstütze</span>
         <h2>Fünf Hebel für fokussiertes Marketing.</h2>
-        <div class="support-list">
-          <div class="support-item">
-            <h4>Positionierung schärfen</h4>
-            <p>Klarer bestimmen, wofür eine Marke steht, worin ihre relevante Differenzierung liegt und welche Botschaften daraus folgen.</p>
+        <div class="acc" id="acc">
+          <div class="acc-item open">
+            <button class="acc-head"><span class="ix">01</span> Positionierung schärfen <span class="pm">+</span></button>
+            <div class="acc-body"><p>Klarer bestimmen, wofür eine Marke steht, worin ihre relevante Differenzierung liegt und welche Botschaften daraus folgen.</p></div>
           </div>
-          <div class="support-item">
-            <h4>Prioritäten klären</h4>
-            <p>Themen, Maßnahmen und Anforderungen so ordnen, dass Entscheidungen leichter fallen und Ressourcen gezielter wirken.</p>
+          <div class="acc-item">
+            <button class="acc-head"><span class="ix">02</span> Prioritäten klären <span class="pm">+</span></button>
+            <div class="acc-body"><p>Themen, Maßnahmen und Anforderungen so ordnen, dass Entscheidungen leichter fallen und Ressourcen gezielter wirken.</p></div>
           </div>
-          <div class="support-item">
-            <h4>Neuausrichtung strukturieren</h4>
-            <p>Marke, Kommunikation und Steuerung neu ordnen, wenn Wachstum oder Transformation neue Klarheit verlangen.</p>
+          <div class="acc-item">
+            <button class="acc-head"><span class="ix">03</span> Neuausrichtung strukturieren <span class="pm">+</span></button>
+            <div class="acc-body"><p>Marke, Kommunikation und Steuerung neu ordnen, wenn Wachstum oder Transformation neue Klarheit verlangen.</p></div>
           </div>
-          <div class="support-item">
-            <h4>Perspektiven zusammenführen</h4>
-            <p>Geschäftsführung, Marketing, Vertrieb und Partner auf eine gemeinsame Richtung bringen — zu einer tragfähigen Entscheidungsgrundlage.</p>
+          <div class="acc-item">
+            <button class="acc-head"><span class="ix">04</span> Perspektiven zusammenführen <span class="pm">+</span></button>
+            <div class="acc-body"><p>Geschäftsführung, Marketing, Vertrieb und Partner auf eine gemeinsame Richtung bringen, damit aus unterschiedlichen Sichtweisen eine tragfähige Entscheidungsgrundlage entsteht.</p></div>
           </div>
-          <div class="support-item">
-            <h4>Wirkung erhöhen</h4>
-            <p>Marketing stärker auf Relevanz, Fokus und unternehmerische Ziele ausrichten, damit Maßnahmen besser zusammenwirken.</p>
+          <div class="acc-item">
+            <button class="acc-head"><span class="ix">05</span> Wirkung erhöhen <span class="pm">+</span></button>
+            <div class="acc-body"><p>Marketing stärker auf Relevanz, Fokus und unternehmerische Ziele ausrichten, damit Maßnahmen besser zusammenwirken.</p></div>
           </div>
         </div>
       </div>
@@ -412,60 +460,47 @@
   </div>
 </section>
 
-<!-- OUTCOMES -->
-<section class="sec outcomes reveal" id="ergebnisse">
+<!-- STATS -->
+<section class="sec stats reveal">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="kicker">Was daraus entsteht</span>
-      <h2>Klarheit, die im Alltag trägt.</h2>
-    </div>
-    <div class="out-grid">
-      <div class="out-cell">
-        <div class="num">01</div>
-        <h4>Klarere Steuerung von Budgets und Prioritäten</h4>
-        <p>Ressourcen werden gezielter eingesetzt, Entscheidungen nachvollziehbarer, Maßnahmen zahlen stärker auf gemeinsame Ziele ein.</p>
-      </div>
-      <div class="out-cell">
-        <div class="num">02</div>
-        <h4>Geklärte Schnittstellen und Verantwortlichkeiten</h4>
-        <p>Bereiche, Stakeholder und externe Partner arbeiten besser zusammen, weil Rollen und Entscheidungswege klarer sind.</p>
-      </div>
-      <div class="out-cell">
-        <div class="num">03</div>
-        <h4>Etablierte KPIs und Steuerungsgrößen</h4>
-        <p>Schneller erkennbar, was wirkt, wo nachjustiert werden muss und wie Maßnahmen laufend verbessert werden.</p>
-      </div>
-      <div class="out-cell">
-        <div class="num">04</div>
-        <h4>Handlungsfähigere Teams und Beteiligte</h4>
-        <p>Teams arbeiten eigenständiger, handeln proaktiver und übernehmen im Alltag klarer Verantwortung.</p>
-      </div>
+    <div class="stats-grid" id="stats">
+      <div class="stat"><div class="big" data-target="30" data-suffix="+">0</div><div class="lab">Jahre an der Schnittstelle von Marke &amp; Kommunikation</div></div>
+      <div class="stat"><div class="big" data-target="6" data-suffix="×">0</div><div class="lab">Umsatz in 2,5 Jahren versechsfacht</div></div>
+      <div class="stat"><div class="big" data-target="11" data-suffix=" Mon.">0</div><div class="lab">bis zum Break-even eines Tech-Start-ups</div></div>
+      <div class="stat"><div class="big" data-target="1" data-suffix="×">0</div><div class="lab">Eintrag ins Guinness-Buch der Rekorde</div></div>
     </div>
   </div>
 </section>
 
-<!-- HOW I WORK -->
+<!-- OUTCOMES -->
+<section class="sec outcomes reveal" id="ergebnisse">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" style="color:var(--accent)">Was daraus entsteht</span>
+      <h2>Klarheit, die im Alltag trägt.</h2>
+    </div>
+    <div class="out-grid">
+      <div class="out-cell"><div class="num">01</div><h4>Klarere Steuerung von Budgets und Prioritäten</h4><p>Ressourcen werden gezielter eingesetzt, Entscheidungen nachvollziehbarer, Maßnahmen zahlen stärker auf gemeinsame Ziele ein.</p></div>
+      <div class="out-cell"><div class="num">02</div><h4>Geklärte Schnittstellen und Verantwortlichkeiten</h4><p>Bereiche, Stakeholder und externe Partner arbeiten besser zusammen, weil Rollen und Entscheidungswege klarer sind.</p></div>
+      <div class="out-cell"><div class="num">03</div><h4>Etablierte KPIs und Steuerungsgrößen</h4><p>Es wird schneller erkennbar, was wirkt, wo nachjustiert werden muss und wie Maßnahmen laufend verbessert werden können.</p></div>
+      <div class="out-cell"><div class="num">04</div><h4>Handlungsfähigere Teams und Beteiligte</h4><p>Teams arbeiten eigenständiger, handeln proaktiver und übernehmen im Alltag klarer Verantwortung.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
 <section class="sec how reveal" id="vorgehen">
   <div class="wrap">
     <div class="how-grid">
       <div>
         <span class="kicker">Wie ich arbeite</span>
         <h2>Zuhören, ordnen, verdichten.</h2>
-        <p class="how-pull" style="margin-top:34px">Ich arbeite pragmatisch, strukturiert und partnerschaftlich — mit klarem Blick für das, was strategisch sinnvoll, im Unternehmen umsetzbar ist und wirklich funktioniert.</p>
+        <p class="how-pull" style="margin-top:32px">Ich arbeite pragmatisch, strukturiert und partnerschaftlich. Mit klarem Blick für das, was strategisch sinnvoll, im Unternehmen umsetzbar ist und wirklich funktioniert.</p>
       </div>
       <div class="how-steps">
-        <div class="how-step">
-          <div class="n">1</div>
-          <p>Ich steige dort ein, wo Themen unübersichtlich werden, Entscheidungen stocken oder unterschiedliche Sichtweisen zusammengebracht werden müssen.</p>
-        </div>
-        <div class="how-step">
-          <div class="n">2</div>
-          <p>Ich höre zu, frage nach, ordne ein und verdichte. So wird sichtbar, welche Fragen wirklich entscheidend sind — und welche nachrangig.</p>
-        </div>
-        <div class="how-step">
-          <div class="n">3</div>
-          <p>Daraus entsteht eine tragfähige Grundlage für Entscheidungen, Kommunikation und Umsetzung.</p>
-        </div>
+        <div class="how-step"><div class="n">1</div><p>Ich steige dort ein, wo Themen unübersichtlich werden, Entscheidungen stocken oder unterschiedliche Sichtweisen zusammengebracht werden müssen.</p></div>
+        <div class="how-step"><div class="n">2</div><p>Ich höre zu, frage nach, ordne ein und verdichte. So wird sichtbar, welche Fragen wirklich entscheidend sind und welche Themen nachrangig werden.</p></div>
+        <div class="how-step"><div class="n">3</div><p>Daraus entsteht eine tragfähige Grundlage für Entscheidungen, Kommunikation und Umsetzung.</p></div>
       </div>
     </div>
   </div>
@@ -476,16 +511,17 @@
   <div class="wrap">
     <div class="about-grid">
       <div class="about-photos">
-        <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/f411cbc2-dcda-4be3-8d6a-25761173255a/IMG_1176.jpeg" alt="Bodo Schiefer Porträt">
-        <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/d193c2fe-663c-464b-952c-92931496515f/Bild+fu%CC%88r+Website.png" alt="Arbeitsweise">
+        <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/1781773248525-QKRSBMXDYTMU4QMR9R3P/unsplash-image-IhWRrZx4-kk.jpg" alt="Bodo Schiefer">
+        <div class="cap">Bodo Schiefer</div>
       </div>
       <div class="about-body">
         <span class="kicker">Über mich</span>
         <h2>Über 30 Jahre an der Schnittstelle von Marke, Marketing und Kommunikation.</h2>
-        <p style="margin-top:26px">Ich habe internationale Marken, mittelständische Unternehmen und Start-ups begleitet: von FMCG, OTC und Handel über Automotive, Telekommunikation und Cybersecurity bis zu B2B, Maschinenbau, Weiterbildung und Versicherungen.</p>
-        <p class="hl">Diese Breite hat meinen Blick geschärft. Ich sehe nicht nur Branchen — ich erkenne Muster: wo Themen unklar werden, wo Entscheidungen stocken und wo Kommunikation an Wirkung verliert.</p>
-        <p>Geprägt hat mich, dass ich unterschiedliche Rollen von innen kenne. Ich habe auf Agenturseite gearbeitet, in Beratungs- und Führungsverantwortung, war als Marketing Manager direkt beim Kunden im Einsatz — und habe ein Technologie-Start-up mitaufgebaut und geleitet. Wer selbst gesteuert, entschieden und unternehmerische Verantwortung getragen hat, berät anders.</p>
-        <p>Meine Stärke liegt darin, mich schnell in komplexe Aufgaben einzuarbeiten, unterschiedliche Perspektiven zusammenzubringen und daraus eine tragfähige Richtung zu entwickeln. Schwierige Aufgaben scheitern selten daran, dass es keine Lösung gibt — häufig wurde nur noch nicht klar genug gefragt, tief genug gedacht oder konsequent genug daran gearbeitet.</p>
+        <p style="margin-top:24px">Ich habe internationale Marken, mittelständische Unternehmen und Start-ups begleitet: von FMCG, OTC und Handel über Automotive, Telekommunikation und Cybersecurity bis zu B2B, Maschinenbau, Weiterbildung und Versicherungen.</p>
+        <p class="hl">Diese Breite hat meinen Blick geschärft. Ich sehe nicht nur Branchen. Ich erkenne Muster: wo Themen unklar werden, wo Entscheidungen stocken, wo Interessen auseinanderlaufen und wo Kommunikation an Wirkung verliert.</p>
+        <p>Geprägt hat mich dabei besonders, dass ich unterschiedliche Rollen von innen kenne. Ich habe auf Agenturseite gearbeitet, in Beratungs- und Führungsverantwortung, war als Marketing Manager direkt beim Kunden im Einsatz und habe ein Technologie-Start-up mitaufgebaut und geleitet. Wer selbst gesteuert, entschieden, vermittelt und unternehmerische Verantwortung getragen hat, berät anders.</p>
+        <p class="hl">Meine Stärke liegt darin, mich schnell in komplexe Aufgaben einzuarbeiten, unterschiedliche Perspektiven zusammenzubringen und daraus eine tragfähige Richtung zu entwickeln.</p>
+        <p>Ich bin überzeugt: Schwierige Aufgaben scheitern selten daran, dass es keine Lösung gibt. Häufig wurde nur noch nicht klar genug gefragt, tief genug gedacht oder konsequent genug daran gearbeitet.</p>
         <div class="industries">
           <span>FMCG</span><span>OTC &amp; Handel</span><span>Automotive</span><span>Telekommunikation</span><span>Cybersecurity</span><span>B2B</span><span>Maschinenbau</span><span>Weiterbildung</span><span>Versicherungen</span>
         </div>
@@ -502,36 +538,18 @@
       <h2>Wirkung, die sich messen lässt.</h2>
     </div>
     <div class="succ-grid">
-      <div class="succ-card">
-        <h4>Umsatz in 2,5 Jahren versechsfacht</h4>
-        <p>Strategische Neuausrichtung von Angebot, Positionierung und Kommunikation.</p>
-      </div>
-      <div class="succ-card">
-        <h4>Break-even nach 11 Monaten</h4>
-        <p>Marketing- und Kommunikationsstrategie für ein Technologie-Start-up geschärft und das Anwendungsfeld zielgruppengerecht erweitert.</p>
-      </div>
-      <div class="succ-card">
-        <h4>Internationale Budgets reduziert</h4>
-        <p>Einheitliche Produktpositionierung für mehrere Länder entwickelt und implementiert.</p>
-      </div>
-      <div class="succ-card">
-        <h4>Marketing-Transformation unterstützt</h4>
-        <p>Kundenzentriertes Mindset etabliert, Geschäftsmodell und Organisationsstrukturen weiterentwickelt.</p>
-      </div>
-      <div class="succ-card">
-        <h4>Wirkung im Funnel erhöht</h4>
-        <p>Performance und Branding markenadäquat verbunden und Maßnahmen effizienter gesteuert.</p>
-      </div>
-      <div class="succ-card">
-        <h4>Strategie in Wirkung übersetzt</h4>
-        <p>Marke mit Kleinstbudget revitalisiert und fachübergreifend aktiviert — mit Eintrag ins Guinness-Buch der Rekorde.</p>
-      </div>
+      <div class="succ-card"><div class="ic">Wachstum</div><h4>Umsatz in 2,5 Jahren versechsfacht</h4><p>Strategische Neuausrichtung von Angebot, Positionierung und Kommunikation.</p></div>
+      <div class="succ-card"><div class="ic">Profitabilität</div><h4>Break-even nach 11 Monaten</h4><p>Marketing- und Kommunikationsstrategie für ein Technologie-Start-up geschärft und das Anwendungsfeld zielgruppengerecht erweitert.</p></div>
+      <div class="succ-card"><div class="ic">Effizienz</div><h4>Internationale Marketingbudgets reduziert</h4><p>Einheitliche Produktpositionierung für mehrere Länder entwickelt und implementiert.</p></div>
+      <div class="succ-card"><div class="ic">Transformation</div><h4>Marketing-Transformation unterstützt</h4><p>Kundenzentriertes Mindset etabliert, Geschäftsmodell und Organisationsstrukturen weiterentwickelt.</p></div>
+      <div class="succ-card"><div class="ic">Performance</div><h4>Wirkung im Marketingfunnel erhöht</h4><p>Performance und Branding markenadäquat verbunden und Maßnahmen effizienter gesteuert.</p></div>
+      <div class="succ-card"><div class="ic">Kreativität</div><h4>Strategie in Wirkung übersetzt</h4><p>Marke mit Kleinstbudget revitalisiert und fachübergreifend aktiviert — mit Eintrag ins Guinness-Buch der Rekorde.</p></div>
     </div>
   </div>
 </section>
 
 <!-- MANDATES -->
-<section class="sec mandates reveal" id="mandate">
+<section class="sec mandates reveal" id="mandate" style="background:#fff">
   <div class="wrap">
     <span class="kicker">Auswahl bisheriger Mandate</span>
     <h2>Vertrauen von Marken aus vielen Branchen.</h2>
@@ -543,7 +561,7 @@
 <section class="sec cta-banner reveal">
   <div class="wrap">
     <h2>Lassen Sie uns sprechen.</h2>
-    <div class="sub">Neuausrichtung, Wachstum oder festgefahrene Entscheidungen?</div>
+    <div class="sub">Ob Neuausrichtung, Wachstum oder festgefahrene Entscheidungen.</div>
     <p>Wenn Marke und Kommunikation an Klarheit, Fokus und Wirkung gewinnen sollen, lohnt sich ein unverbindliches Kennenlernen.</p>
     <a href="mailto:bs@schiefer-online.eu" class="btn btn-primary">Austausch vereinbaren</a>
   </div>
@@ -556,78 +574,56 @@
       <span class="kicker">Was Kunden sagen</span>
       <h2>Stimmen aus über drei Jahrzehnten Zusammenarbeit.</h2>
     </div>
-    <div class="test-grid">
-      <div class="test-card">
-        <p class="q">Bodo hat unsere Arbeit über mehrere Jahre mit großem Engagement, hohem Qualitätsanspruch und strategischer Stärke begleitet. Er durchdringt komplexe Zusammenhänge schnell und schafft klare Orientierung.</p>
-        <div class="test-foot">
-          <div class="who"><strong>Marcel Theijs</strong><span>Marketingdirektor, Haufe Akademie</span></div>
-          <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/b0e5a30d-fc44-4287-a1ed-6869da3db307/Logo+AKA.png" alt="Haufe Akademie">
+    <div class="tcar">
+      <div class="tcar-view">
+        <div class="tcar-track" id="tcarTrack">
+          <div class="tcar-slide"><div class="tcar-card">
+            <p class="q">Bodo hat unsere Arbeit über mehrere Jahre hinweg mit großem Engagement, hohem Qualitätsanspruch, strategischer Stärke und großer Verlässlichkeit begleitet. Er durchdringt komplexe Zusammenhänge schnell und schafft klare Orientierung.</p>
+            <div class="tcar-side"><img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/b0e5a30d-fc44-4287-a1ed-6869da3db307/Logo+AKA.png" alt="Haufe Akademie"><strong>Marcel Theijs</strong><span>Marketingdirektor, Haufe Akademie</span></div>
+          </div></div>
+          <div class="tcar-slide"><div class="tcar-card">
+            <p class="q">Bodo ist offen, gut organisiert und effizient. Er hat die Zusammenarbeit zwischen den verschiedenen Beteiligten verbessert und dafür gesorgt, dass die Ergebnisse termingerecht und im Rahmen des Budgets geliefert wurden.</p>
+            <div class="tcar-side"><img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/69abed7b-b21a-4ac8-ae4d-af438e9ff5fc/Logo+BI+fu%CC%88r+Kundenzitat.png" alt="Boehringer Ingelheim"><strong>Kate Evans</strong><span>Global Marketing Director Dulcolax, Boehringer Ingelheim</span></div>
+          </div></div>
+          <div class="tcar-slide"><div class="tcar-card">
+            <p class="q">Bodo verfügt über ein außergewöhnlich gutes Verständnis dafür, wie Marken, Marketing und Customer Experience zusammenwirken müssen, um messbare Wirkung zu entfalten. Die von ihm verantworteten Maßnahmen führten zu nachweisbarem Wachstum.</p>
+            <div class="tcar-side"><img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/3ea1f9a7-ccdf-4942-9719-94f07ebe837e/Logo+snoopstar+fu%CC%88r+Kundenzitat.png" alt="snoopstar"><strong>Stefan W. Herzberg</strong><span>Aufsichtsratsvorsitzender, snoopstar</span></div>
+          </div></div>
+          <div class="tcar-slide"><div class="tcar-card">
+            <p class="q">Bodo ist nicht nur ein hochmotivierter, zuverlässiger und kooperativer Geschäftspartner, sondern auch ein leidenschaftlicher Lösungsfinder. Mit seiner dynamischen Art schafft er eine Atmosphäre des Vertrauens und der Inspiration.</p>
+            <div class="tcar-side"><img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/6a64f065-429d-43eb-af2f-ef012d0d8e00/Logo+Volvo+fu%CC%88r+Kundenzitat.png" alt="Volvo"><strong>Julia Risch</strong><span>Team Lead Brand Marketing &amp; Campaigns, Volvo</span></div>
+          </div></div>
         </div>
       </div>
-      <div class="test-card">
-        <p class="q">Bodo ist offen, gut organisiert und effizient. Er hat die Zusammenarbeit zwischen den Beteiligten verbessert und dafür gesorgt, dass Ergebnisse termingerecht und im Budget geliefert wurden.</p>
-        <div class="test-foot">
-          <div class="who"><strong>Kate Evans</strong><span>Global Marketing Director Dulcolax, Boehringer Ingelheim</span></div>
-          <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/69abed7b-b21a-4ac8-ae4d-af438e9ff5fc/Logo+BI+fu%CC%88r+Kundenzitat.png" alt="Boehringer Ingelheim">
-        </div>
-      </div>
-      <div class="test-card">
-        <p class="q">Bodo verfügt über ein außergewöhnlich gutes Verständnis dafür, wie Marken, Marketing und Customer Experience zusammenwirken müssen. Die von ihm verantworteten Maßnahmen führten zu nachweisbarem Wachstum.</p>
-        <div class="test-foot">
-          <div class="who"><strong>Stefan W. Herzberg</strong><span>Aufsichtsratsvorsitzender, snoopstar</span></div>
-          <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/3ea1f9a7-ccdf-4942-9719-94f07ebe837e/Logo+snoopstar+fu%CC%88r+Kundenzitat.png" alt="snoopstar">
-        </div>
-      </div>
-      <div class="test-card">
-        <p class="q">Bodo ist nicht nur ein zuverlässiger und kooperativer Geschäftspartner, sondern auch ein leidenschaftlicher Lösungsfinder. Mit seiner dynamischen Art schafft er eine Atmosphäre des Vertrauens und der Inspiration.</p>
-        <div class="test-foot">
-          <div class="who"><strong>Julia Risch</strong><span>Team Lead Brand Marketing &amp; Campaigns, Volvo</span></div>
-          <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/6a64f065-429d-43eb-af2f-ef012d0d8e00/Logo+Volvo+fu%CC%88r+Kundenzitat.png" alt="Volvo">
-        </div>
+      <div class="tcar-nav">
+        <button class="tcar-btn" id="tPrev" aria-label="Zurück">‹</button>
+        <div class="tcar-dots" id="tDots"></div>
+        <button class="tcar-btn" id="tNext" aria-label="Weiter">›</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRESS -->
+<!-- PRESS WÜHLTISCH -->
 <section class="sec press reveal" id="presse">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="kicker">Presse &amp; Publikationen</span>
-      <h2>Sichtbar in Fach- und Wirtschaftsmedien.</h2>
+    <div class="press-head-row">
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="kicker">Presse &amp; Publikationen</span>
+        <h2>Stöbern Sie im Pressearchiv.</h2>
+      </div>
+      <div class="press-tools">
+        <button id="shuffleBtn">Mischen</button>
+        <button id="tidyBtn">Aufräumen</button>
+      </div>
     </div>
-    <div class="press-list">
-      <a class="press-item" href="https://www.handelsblatt.com/unternehmen/handel-konsumgueter/augmented-reality-das-start-up-snoopstar-bringt-aldi-prospekten-das-sprechen-bei/27359276.html" target="_blank" rel="noopener">
-        <div class="outlet">Handelsblatt<small>2021</small></div>
-        <div class="desc">Porträt über unternehmerische Innovationsleistung, profitables Wachstum und Augmented Reality. Auszeichnung als „Unternehmer des Tages“.</div>
-        <div class="arrow">→</div>
-      </a>
-      <a class="press-item" href="https://www.horizont.net/marketing/nachrichten/snoopstar-so-macht-sich-print-mit-ar-fit-fuers-metaverse-197190" target="_blank" rel="noopener">
-        <div class="outlet">HORIZONT<small>2022</small></div>
-        <div class="desc">Bericht über den strategischen Einsatz von Augmented Reality in Marketingkommunikation und Sales Funnel.</div>
-        <div class="arrow">→</div>
-      </a>
-      <a class="press-item" href="https://www.horizont.net/agenturen/nachrichten/Expansion-Britische-Agenturgruppe-Engine-kommt-nach-Deutschland-167503" target="_blank" rel="noopener">
-        <div class="outlet">HORIZONT<small>2018</small></div>
-        <div class="desc">Aufbau des deutschen Geschäfts der britischen Agenturgruppe Engine im Kontext von Expansion und Brexit.</div>
-        <div class="arrow">→</div>
-      </a>
-      <a class="press-item" href="https://amzn.eu/d/08cUxO1x" target="_blank" rel="noopener">
-        <div class="outlet">Springer-Vieweg<small>2022 · Buchkapitel</small></div>
-        <div class="desc">Digitale und innovative Vermarktung von Gebäuden durch Augmented Reality aus Kommunikations- und Transformationssicht.</div>
-        <div class="arrow">→</div>
-      </a>
-      <a class="press-item" href="https://www.bdzv.de/service/presse/branchennachrichten/2025/kurswechsel-jetzt-der-bdzv-vermarktungsreport-2025-fuer-mehr-wachstum" target="_blank" rel="noopener">
-        <div class="outlet">BDZV-Jahresreport<small>2021</small></div>
-        <div class="desc">Fachbeitrag über die strategische Verbindung von Print und Digital im Mediamix sowie Augmented Reality für Wirkung und Conversion.</div>
-        <div class="arrow">→</div>
-      </a>
-    </div>
+    <div class="table" id="table"></div>
+    <p class="press-hint">✦ Ziehen Sie die Ausschnitte über den Tisch — oben rechts mischen oder ordentlich stapeln.</p>
   </div>
 </section>
 
 <!-- AWARDS -->
-<section class="sec awards reveal" id="awards">
+<section class="sec awards reveal" id="awards" style="background:#fff">
   <div class="wrap">
     <span class="kicker">Auszeichnungen</span>
     <h2>Prämiert für wirksame Marken- und Kommunikationsarbeit.</h2>
@@ -635,11 +631,15 @@
   </div>
 </section>
 
-<!-- TRUST BANNER -->
+<!-- TRUST -->
 <section class="trust reveal">
   <div class="wrap">
-    <img class="logo-round" src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/030294ea-fdf8-4383-905a-d6feeb0860ea/Logo+Bodo+Schiefer.png" alt="Bodo Schiefer Siegel">
+    <div class="trust-photo">
+      <img src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/f411cbc2-dcda-4be3-8d6a-25761173255a/IMG_1176.jpeg" alt="Bodo Schiefer">
+      <div class="cap">Bodo Schiefer</div>
+    </div>
     <div>
+      <img class="logo-round" src="https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/030294ea-fdf8-4383-905a-d6feeb0860ea/Logo+Bodo+Schiefer.png" alt="Bodo Schiefer Siegel">
       <h2>Erfahrung, der Sie vertrauen können.</h2>
       <p>Seit mehr als dreißig Jahren unterstütze ich anspruchsvolle Organisationen dabei, komplexe Herausforderungen strukturiert zu lösen und ihre Effizienz deutlich zu steigern.</p>
     </div>
@@ -661,7 +661,7 @@
         <a href="#vorgehen">Vorgehen</a>
         <a href="#ueber-mich">Über mich</a>
         <a href="#erfolge">Erfolge</a>
-        <a href="#stimmen">Kundenstimmen</a>
+        <a href="#presse">Presse</a>
       </div>
       <div class="foot-col">
         <h5>Kontakt</h5>
@@ -679,15 +679,182 @@
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
-  // mobile menu
+
+  /* mobile menu */
   var mb=document.getElementById('menuBtn'),nl=document.getElementById('navlinks');
   mb.addEventListener('click',function(){nl.classList.toggle('open')});
   nl.addEventListener('click',function(e){if(e.target.tagName==='A')nl.classList.remove('open')});
-  // reveal on scroll
-  var io=new IntersectionObserver(function(es){
-    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
-  },{threshold:.12});
+
+  /* reveal */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+  /* ---------- LOGO MARQUEE (echte Logos via Clearbit, Textfallback) ---------- */
+  (function(){
+    var brands=[
+      {n:'Haufe Akademie',d:'haufe-akademie.de'},
+      {n:'Boehringer Ingelheim',d:'boehringer-ingelheim.com'},
+      {n:'Volvo',d:'volvocars.com'},
+      {n:'Ford',d:'ford.com'},
+      {n:'P&G',d:'pg.com'},
+      {n:'GSK',d:'gsk.com'},
+      {n:'O2 Business',d:'o2online.de'},
+      {n:'Visteon',d:'visteon.com'},
+      {n:'Provinzial',d:'provinzial.de'},
+      {n:'G DATA',d:'gdata.de'},
+      {n:'Johnson Controls',d:'johnsoncontrols.com'},
+      {n:'Bilstein',d:'bilstein.de'},
+      {n:'ALDI',d:'aldi.de'},
+      {n:'Glasurit',d:'glasurit.com'},
+      {n:'RENOLIT',d:'renolit.com'},
+      {n:'BMI',d:'bmigroup.com'},
+      {n:'Merten',d:'merten.de'},
+      {n:'snoopstar',d:'snoopstar.com'}
+    ];
+    var t=document.getElementById('mtrack');
+    function makeChip(b){
+      var chip=document.createElement('div');chip.className='mq-chip';
+      var img=document.createElement('img');
+      img.src='https://logo.clearbit.com/'+b.d+'?size=80';
+      img.alt=b.n;img.loading='lazy';
+      img.onerror=function(){chip.classList.add('txt');chip.textContent=b.n;};
+      chip.appendChild(img);
+      return chip;
+    }
+    function build(){brands.forEach(function(b){t.appendChild(makeChip(b));});}
+    build();build(); /* zweimal für nahtlose -50% Schleife */
+  })();
+
+  /* ---------- CHAOS -> CLARITY ---------- */
+  (function(){
+    var words=['zu viele Maßnahmen','unklare Prioritäten','Silos','Bauchgefühl','Budget?','Wer entscheidet?','Kampagne ≠ Strategie','widersprüchliche Ziele','kein roter Faden','Agentur vs. intern','Reporting-Chaos','Aktionismus','Positionierung?','Tool-Wildwuchs'];
+    var field=document.getElementById('chaosField');
+    var place=[[8,18,-9],[34,10,6],[60,16,-5],[12,42,4],[40,38,-7],[66,46,8],[20,66,-4],[48,70,5],[72,74,-8],[6,82,7],[36,86,-3],[58,30,4],[80,22,-6],[26,54,8]];
+    words.forEach(function(w,i){
+      var p=place[i%place.length];
+      var c=document.createElement('div');c.className='chip';c.textContent=w;
+      c.style.left=p[0]+'%';c.style.top=p[1]+'%';c.style.transform='rotate('+p[2]+'deg)';
+      field.appendChild(c);
+    });
+    var box=document.getElementById('compare'),clar=document.getElementById('clarityLayer'),h=document.getElementById('handle');
+    function setPos(px){var r=box.getBoundingClientRect();var pct=Math.max(6,Math.min(94,(px-r.left)/r.width*100));clar.style.clipPath='inset(0 0 0 '+pct+'%)';h.style.left=pct+'%';}
+    var dragging=false;
+    box.addEventListener('pointerdown',function(e){dragging=true;setPos(e.clientX);box.setPointerCapture(e.pointerId)});
+    box.addEventListener('pointermove',function(e){if(dragging)setPos(e.clientX)});
+    box.addEventListener('pointerup',function(){dragging=false});
+    box.addEventListener('pointercancel',function(){dragging=false});
+    var demo=true,dir=1,pos=50;
+    box.addEventListener('pointerdown',function(){demo=false});
+    var iv=setInterval(function(){if(!demo){clearInterval(iv);return;}pos+=dir*0.6;if(pos>72||pos<34)dir*=-1;clar.style.clipPath='inset(0 0 0 '+pos+'%)';h.style.left=pos+'%';},40);
+  })();
+
+  /* ---------- ACCORDION ---------- */
+  (function(){
+    var items=document.querySelectorAll('#acc .acc-item');
+    function setBody(it,open){var b=it.querySelector('.acc-body');b.style.maxHeight=open?(b.scrollHeight+'px'):'0px';}
+    items.forEach(function(it){
+      setBody(it,it.classList.contains('open'));
+      it.querySelector('.acc-head').addEventListener('click',function(){
+        var isOpen=it.classList.contains('open');
+        items.forEach(function(o){o.classList.remove('open');setBody(o,false);});
+        if(!isOpen){it.classList.add('open');setBody(it,true);}
+      });
+    });
+    window.addEventListener('resize',function(){var op=document.querySelector('#acc .acc-item.open');if(op)setBody(op,true);});
+  })();
+
+  /* ---------- STATS COUNTER ---------- */
+  (function(){
+    var done=false,grid=document.getElementById('stats');
+    var so=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting&&!done){done=true;
+        grid.querySelectorAll('.big').forEach(function(el){
+          var tgt=+el.dataset.target,suf=el.dataset.suffix||'',t0=null,dur=1400;
+          function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1);var val=Math.round((1-Math.pow(1-p,3))*tgt);el.innerHTML=val+'<span class="u">'+suf+'</span>';if(p<1)requestAnimationFrame(step);}
+          requestAnimationFrame(step);
+        });
+      }
+    });},{threshold:.4});
+    so.observe(grid);
+  })();
+
+  /* ---------- TESTIMONIAL CAROUSEL ---------- */
+  (function(){
+    var track=document.getElementById('tcarTrack'),slides=track.children.length,i=0;
+    var dots=document.getElementById('tDots');
+    for(var k=0;k<slides;k++){(function(k){var b=document.createElement('button');if(k===0)b.className='active';b.addEventListener('click',function(){go(k);rs()});dots.appendChild(b)})(k)}
+    function go(n){i=(n+slides)%slides;track.style.transform='translateX(-'+(i*100)+'%)';dots.querySelectorAll('button').forEach(function(d,x){d.classList.toggle('active',x===i)});}
+    document.getElementById('tNext').addEventListener('click',function(){go(i+1);rs()});
+    document.getElementById('tPrev').addEventListener('click',function(){go(i-1);rs()});
+    var auto=setInterval(function(){go(i+1)},6000);
+    function rs(){clearInterval(auto);auto=setInterval(function(){go(i+1)},6000)}
+    var car=document.querySelector('.tcar');
+    car.addEventListener('mouseenter',function(){clearInterval(auto)});
+    car.addEventListener('mouseleave',function(){rs()});
+  })();
+
+  /* ---------- PRESS WÜHLTISCH (echte Artikelbilder) ---------- */
+  (function(){
+    var articles=[
+      {yr:'2021',outlet:'Handelsblatt',img:'',desc:'Porträt über unternehmerische Innovationsleistung, profitables Wachstum und Augmented Reality als wirksames Instrument in der Marketingkommunikation. Auszeichnung als „Unternehmer des Tages“.',url:'https://www.handelsblatt.com/unternehmen/handel-konsumgueter/augmented-reality-das-start-up-snoopstar-bringt-aldi-prospekten-das-sprechen-bei/27359276.html'},
+      {yr:'2022',outlet:'HORIZONT',img:'https://www.horizont.net/news/media/37/Snoopstar_Aldi_Sd-362888.jpeg',desc:'Bericht über den strategischen Einsatz von Augmented Reality in Marketingkommunikation und Sales Funnel.',url:'https://www.horizont.net/marketing/nachrichten/snoopstar-so-macht-sich-print-mit-ar-fit-fuers-metaverse-197190'},
+      {yr:'2018',outlet:'HORIZONT',img:'https://www.horizont.net/news/media/25/Engine-240955.jpeg',desc:'Bericht über den Aufbau des deutschen Geschäfts der britischen Agenturgruppe Engine im Kontext von Expansion und Brexit.',url:'https://www.horizont.net/agenturen/nachrichten/Expansion-Britische-Agenturgruppe-Engine-kommt-nach-Deutschland-167503'},
+      {yr:'2022 · Buchkapitel',outlet:'Springer-Vieweg',img:'',desc:'Buchkapitel über die digitale und innovative Vermarktung von Gebäuden durch Augmented Reality aus Kommunikations-, Vermarktungs- und Transformationssicht.',url:'https://amzn.eu/d/08cUxO1x'},
+      {yr:'2021',outlet:'BDZV-Jahresreport',img:'https://www.bdzv.de/fileadmin/_processed_/7/9/csm_Vermarktungsreport_2025__570x420__4e41b3ba40.png',desc:'Fachbeitrag über die strategische Verbindung von Print und Digital im Mediamix sowie den Einsatz von Augmented Reality für Wirkung, Conversion und Optimierung.',url:'https://www.bdzv.de/service/presse/branchennachrichten/2025/kurswechsel-jetzt-der-bdzv-vermarktungsreport-2025-fuer-mehr-wachstum'}
+    ];
+    var table=document.getElementById('table'),z=1,els=[];
+    articles.forEach(function(a){
+      var c=document.createElement('div');c.className='clip';
+      var html='';
+      if(a.img){html+='<div class="clip-photo"><img src="'+a.img+'" alt="" loading="lazy" onerror="this.parentNode.style.display=\'none\'"></div>';}
+      html+='<div class="clip-pad"><div class="clip-mast">'+a.outlet+'</div><div class="clip-yr">'+a.yr+'</div><div class="clip-desc">'+a.desc+'</div><a class="more" href="'+a.url+'" target="_blank" rel="noopener">Artikel lesen →</a></div>';
+      c.innerHTML=html;
+      table.appendChild(c);els.push(c);makeDraggable(c);
+    });
+    function rnd(a,b){return a+Math.random()*(b-a)}
+    function scatter(){
+      var w=table.clientWidth,h=table.clientHeight;
+      els.forEach(function(c){
+        var cw=c.offsetWidth,ch=c.offsetHeight;
+        var x=rnd(8,Math.max(10,w-cw-8)),y=rnd(8,Math.max(10,h-ch-8));
+        c.style.left=x+'px';c.style.top=y+'px';c.style.transform='rotate('+rnd(-10,10)+'deg)';c.style.zIndex=++z;
+      });
+    }
+    function tidy(){
+      var w=table.clientWidth,cw=els[0].offsetWidth;
+      var cols=Math.max(1,Math.floor((w-24)/(cw+18)));
+      var totalW=cols*cw+(cols-1)*18,startX=(w-totalW)/2;
+      els.forEach(function(c,i){
+        var col=i%cols,row=Math.floor(i/cols);
+        c.style.left=(startX+col*(cw+18))+'px';
+        c.style.top=(24+row*(c.offsetHeight+18))+'px';
+        c.style.transform='rotate(0deg)';c.style.zIndex=i+1;
+      });
+    }
+    function makeDraggable(c){
+      c.addEventListener('pointerdown',function(e){
+        if(e.target.classList.contains('more'))return;
+        c.classList.add('drag');c.style.zIndex=++z;
+        var r=c.getBoundingClientRect();
+        var ox=e.clientX-r.left,oy=e.clientY-r.top;
+        c.setPointerCapture(e.pointerId);c.style.transform='rotate(0deg)';
+        function mv(ev){
+          var pr=table.getBoundingClientRect();
+          var x=ev.clientX-pr.left-ox,y=ev.clientY-pr.top-oy;
+          x=Math.max(-20,Math.min(pr.width-c.offsetWidth+20,x));
+          y=Math.max(-10,Math.min(pr.height-c.offsetHeight+10,y));
+          c.style.left=x+'px';c.style.top=y+'px';
+        }
+        function up(){c.classList.remove('drag');c.releasePointerCapture(e.pointerId);document.removeEventListener('pointermove',mv);document.removeEventListener('pointerup',up);}
+        document.addEventListener('pointermove',mv);document.addEventListener('pointerup',up);
+      });
+    }
+    document.getElementById('shuffleBtn').addEventListener('click',scatter);
+    document.getElementById('tidyBtn').addEventListener('click',tidy);
+    var pio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){setTimeout(scatter,60);pio.disconnect();}})},{threshold:.2});
+    pio.observe(table);
+    var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(scatter,200);});
+  })();
 </script>
 </body>
 </html>
