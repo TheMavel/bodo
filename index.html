@@ -78,18 +78,6 @@
     .nav-links.open .nav-cta{margin:10px 32px;text-align:center}
   }
 
-  /* LOGO MARQUEE */
-  .marquee{background:var(--paper);padding:30px 0;overflow:hidden;position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:110px;z-index:2;pointer-events:none}
-  .marquee::before{left:0;background:linear-gradient(90deg,var(--paper),transparent)}
-  .marquee::after{right:0;background:linear-gradient(270deg,var(--paper),transparent)}
-  .marquee .track{display:flex;width:max-content;animation:scroll 48s linear infinite;align-items:center}
-  .marquee:hover .track{animation-play-state:paused}
-  .mq-chip{display:flex;align-items:center;justify-content:center;height:46px;margin:0 38px}
-  .mq-chip img,.mq-chip canvas{height:40px;max-width:210px;width:auto;object-fit:contain;display:block}
-  .mq-chip.txt{font-weight:700;color:var(--ink-soft);font-size:1.02rem;letter-spacing:.01em}
-  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
   /* HERO */
   .hero{padding:0;border-bottom:1px solid var(--line);overflow:hidden}
   .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;min-height:min(84vh,740px)}
@@ -343,10 +331,6 @@
   </div>
 </header>
 
-<!-- LOGO MARQUEE -->
-<div class="marquee" aria-label="Kunden und Partner">
-  <div class="track" id="mtrack"></div>
-</div>
 
 <!-- HERO -->
 <section class="hero" id="top">
@@ -713,66 +697,6 @@
   /* reveal */
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
-
-  /* ---------- LOGO MARQUEE (echte Logos: Laufzeit-Crop aus Bodos Logoteppich) ---------- */
-  (function(){
-    var track=document.getElementById('mtrack');
-    var LT='https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/2d6f1e47-b733-46d5-9912-f815d85c6ae2/Logoteppich+Website.png?format=2500w';
-    var fb=[
-      {u:'https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/b0e5a30d-fc44-4287-a1ed-6869da3db307/Logo+AKA.png',a:'Haufe Akademie'},
-      {u:'https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/69abed7b-b21a-4ac8-ae4d-af438e9ff5fc/Logo+BI+fu%CC%88r+Kundenzitat.png',a:'Boehringer Ingelheim'},
-      {u:'https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/6a64f065-429d-43eb-af2f-ef012d0d8e00/Logo+Volvo+fu%CC%88r+Kundenzitat.png',a:'Volvo'},
-      {u:'https://images.squarespace-cdn.com/content/v1/6a32c6145ae9fb6c0acd608d/3ea1f9a7-ccdf-4942-9719-94f07ebe837e/Logo+snoopstar+fu%CC%88r+Kundenzitat.png',a:'snoopstar'}
-    ];
-    function fallback(){
-      track.innerHTML='';
-      function add(){fb.forEach(function(f){var d=document.createElement('div');d.className='mq-chip';var im=new Image();im.src=f.u;im.alt=f.a;d.appendChild(im);track.appendChild(d);});}
-      add();add();
-    }
-    var img=new Image();img.crossOrigin='anonymous';
-    img.onload=function(){
-      try{
-        var W=img.naturalWidth,H=img.naturalHeight;
-        var c=document.createElement('canvas');c.width=W;c.height=H;
-        var cx=c.getContext('2d');cx.drawImage(img,0,0);
-        var data=cx.getImageData(0,0,W,H).data;
-        function ink(x,y){var i=(y*W+x)*4;return data[i+3]>30&&(data[i]<238||data[i+1]<238||data[i+2]<238);}
-        function rowInk(y){for(var x=0;x<W;x+=3)if(ink(x,y))return true;return false;}
-        var bands=[],inb=false,st=0,y;
-        for(y=0;y<H;y++){var r=rowInk(y);if(r&&!inb){inb=true;st=y;}else if(!r&&inb){inb=false;if(y-st>25)bands.push([st,y]);}}
-        if(inb)bands.push([st,H]);
-        function colInk(x,y0,y1){for(var yy=y0;yy<y1;yy+=2)if(ink(x,yy))return true;return false;}
-        var logos=[];
-        bands.forEach(function(b){
-          var y0=b[0],y1=b[1],raw=[],inc=false,xs=0,x;
-          for(x=0;x<W;x++){var h=colInk(x,y0,y1);if(h&&!inc){inc=true;xs=x;}else if(!h&&inc){inc=false;raw.push([xs,x]);}}
-          if(inc)raw.push([xs,W]);
-          var m=[];raw.forEach(function(s){if(m.length&&s[0]-m[m.length-1][1]<110)m[m.length-1][1]=s[1];else m.push([s[0],s[1]]);});
-          m.filter(function(o){return o[1]-o[0]>35;}).forEach(function(o){
-            var x0=o[0],x1=o[1],ty0=y1,ty1=y0,yy,xx;
-            for(yy=y0;yy<y1;yy++){var hit=false;for(xx=x0;xx<x1;xx+=2){if(ink(xx,yy)){hit=true;break;}}if(hit){if(yy<ty0)ty0=yy;if(yy>ty1)ty1=yy;}}
-            logos.push({x:x0,y:ty0,w:x1-x0,h:ty1-ty0+1});
-          });
-        });
-        if(logos.length<6){fallback();return;}
-        function chip(l){
-          var d=document.createElement('div');d.className='mq-chip';
-          var lc=document.createElement('canvas');lc.width=l.w;lc.height=l.h;
-          var g=lc.getContext('2d');
-          g.drawImage(c,l.x,l.y,l.w,l.h,0,0,l.w,l.h);
-          /* weißen Hintergrund transparent machen -> Logos sitzen frei auf dem Seitenhintergrund */
-          var id=g.getImageData(0,0,l.w,l.h),p=id.data;
-          for(var k=0;k<p.length;k+=4){ if(p[k]>240&&p[k+1]>240&&p[k+2]>240){ p[k+3]=0; } }
-          g.putImageData(id,0,0);
-          d.appendChild(lc);return d;
-        }
-        function fill(){logos.forEach(function(l){track.appendChild(chip(l));});}
-        track.innerHTML='';fill();fill();
-      }catch(e){fallback();}
-    };
-    img.onerror=fallback;
-    img.src=LT;
-  })();
 
   /* ---------- CHAOS -> CLARITY ---------- */
   (function(){
