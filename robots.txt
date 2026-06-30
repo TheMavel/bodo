@@ -1,4 +1,24 @@
+# robots.txt — Bodo Schiefer | Marke & Kommunikation
 User-agent: *
+Allow: /
+
+# KI-Such-/Antwort-Crawler ausdrücklich willkommen (für Sichtbarkeit in ChatGPT-Suche, Perplexity, Claude etc.)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://www.schiefer-online.eu/sitemap.xml
